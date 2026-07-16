@@ -1,26 +1,99 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #07100c;
+  --background-deep: #030806;
+  --surface: #0d1812;
+  --surface-raised: #13221a;
+  --surface-soft: #18261f;
+
+  --green-dark: #123524;
+  --green: #2f7d4a;
+  --green-light: #83c995;
+  --green-pale: #c2e5c9;
+
+  --amber: #d6a44c;
+  --amber-light: #f0c56b;
+  --brown: #6b4c35;
+  --blue-dark: #142631;
+  --red: #b8574f;
+
+  --text: #f1f4ef;
+  --text-muted: #a8b2aa;
+  --text-dim: #738078;
+  --border: #294035;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background-deep: var(--background-deep);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-soft: var(--surface-soft);
+
+  --color-green-dark: var(--green-dark);
+  --color-green: var(--green);
+  --color-green-light: var(--green-light);
+  --color-green-pale: var(--green-pale);
+
+  --color-amber: var(--amber);
+  --color-amber-light: var(--amber-light);
+  --color-brown: var(--brown);
+  --color-blue-dark: var(--blue-dark);
+  --color-status-red: var(--red);
+
+  --color-main-text: var(--text);
+  --color-muted-text: var(--text-muted);
+  --color-dim-text: var(--text-dim);
+  --color-panel-border: var(--border);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--background-deep);
+  color: var(--text);
+}
+
+::selection {
+  background: var(--amber);
+  color: var(--background-deep);
+}
+
+.technical-grid {
+  background-image:
+    linear-gradient(rgba(131, 201, 149, 0.035) 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      rgba(131, 201, 149, 0.035) 1px,
+      transparent 1px
+    );
+  background-size: 42px 42px;
+}
+
+.hero-glow {
+  background:
+    radial-gradient(
+      circle at 72% 35%,
+      rgba(47, 125, 74, 0.18),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 88% 15%,
+      rgba(214, 164, 76, 0.09),
+      transparent 25%
+    );
+}
+
+.panel-shadow {
+  box-shadow:
+    0 0 0 1px rgba(131, 201, 149, 0.04),
+    0 24px 80px rgba(0, 0, 0, 0.32);
 }
