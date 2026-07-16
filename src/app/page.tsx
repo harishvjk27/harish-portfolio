@@ -51,6 +51,55 @@ const projects = [
   },
 ];
 
+const publications = [
+  {
+    number: "01",
+    title:
+      "Survey Instruments Used to Study Mental Health Among STEM Graduate Students",
+    venue: "IEEE Frontiers in Education Conference",
+    year: "2025",
+    type: "Peer-Reviewed Conference Publication",
+    description:
+      "A systematic examination of survey instruments used to study mental health among graduate students in STEM disciplines.",
+    status: "PUBLISHED",
+    href: "#",
+  },
+  {
+    number: "02",
+    title:
+      "Photoelicitation and Coping Strategies Among First-Generation and Low-SES Engineering Students",
+    venue: "ASEE Annual Conference",
+    year: "2026",
+    type: "Engineering Education Research",
+    description:
+      "Research examining coping strategies and academic experiences among first-generation and low-socioeconomic-status engineering students.",
+    status: "PUBLISHED",
+    href: "#",
+  },
+];
+
+const pcBuilds = [
+  {
+    number: "01",
+    title: "Personal Gaming and Engineering Workstation",
+    processor: "AMD Ryzen 7 7700X",
+    graphics: "NVIDIA RTX 3060",
+    description:
+      "A compact desktop configured for gaming, FPGA development, RTL simulation, programming, and general engineering coursework.",
+    tags: ["PC Assembly", "Thermal Management", "Troubleshooting"],
+  },
+  {
+    number: "02",
+    title: "Custom PC Build",
+    processor: "Processor details",
+    graphics: "Graphics details",
+    description:
+      "Add a concise description of the system, its purpose, and the decisions you made while selecting and assembling components.",
+    tags: ["Component Selection", "Cable Management", "System Validation"],
+  },
+];
+
+
 const skills = [
   "SystemVerilog",
   "Verilog",
@@ -116,19 +165,28 @@ export default function Home() {
             </div>
           </a>
 
-          <div className="hidden items-center gap-8 font-[family-name:var(--font-ibm-plex-mono)] text-xs text-muted-text md:flex">
-            <a className="transition hover:text-green-light" href="#projects">
-              PROJECTS
-            </a>
-            <a className="transition hover:text-green-light" href="#profile">
-              PROFILE
-            </a>
-            <a className="transition hover:text-green-light" href="#contact">
-              CONTACT
-            </a>
-          </div>
-        </nav>
+          <div className="hidden items-center gap-7 font-[family-name:var(--font-ibm-plex-mono)] text-xs text-muted-text lg:flex">
+  <a className="transition hover:text-green-light" href="#projects">
+    PROJECTS
+  </a>
 
+  <a className="transition hover:text-green-light" href="#publications">
+    PUBLICATIONS
+  </a>
+
+  <a className="transition hover:text-green-light" href="#builds">
+    PC BUILDS
+  </a>
+
+  <a className="transition hover:text-green-light" href="#profile">
+    PROFILE
+  </a>
+
+  <a className="transition hover:text-green-light" href="#contact">
+    CONTACT
+  </a>
+</div>
+</nav>
         <section
           id="top"
           className="mx-auto grid min-h-[760px] max-w-7xl items-center gap-16 px-6 py-20 lg:grid-cols-[1.15fr_0.85fr] lg:px-10"
@@ -434,11 +492,190 @@ export default function Home() {
         </div>
       </section>
 
+<section
+  id="publications"
+  className="border-b border-panel-border bg-background-deep px-6 py-28 lg:px-10"
+>
+  <div className="mx-auto max-w-7xl">
+    <div className="mb-14 grid gap-6 lg:grid-cols-[1fr_0.7fr] lg:items-end">
+      <div>
+        <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.18em] text-amber">
+          02 // PUBLICATIONS
+        </p>
+
+        <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+          Research and published work.
+        </h2>
+      </div>
+
+      <p className="leading-7 text-muted-text">
+        Peer-reviewed engineering education research focused on student mental
+        health, coping strategies, academic stress, and retention.
+      </p>
+    </div>
+
+    <div className="space-y-5">
+      {publications.map((publication) => (
+        <article
+          key={publication.title}
+          className="group grid gap-8 border border-panel-border bg-surface p-7 transition hover:border-green sm:p-9 lg:grid-cols-[100px_1fr_auto]"
+        >
+          <div>
+            <p className="font-[family-name:var(--font-ibm-plex-mono)] text-2xl text-amber">
+              {publication.number}
+            </p>
+
+            <p className="mt-2 font-[family-name:var(--font-ibm-plex-mono)] text-[10px] tracking-[0.12em] text-dim-text">
+              {publication.year}
+            </p>
+          </div>
+
+          <div>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="border border-green-dark bg-green-dark/30 px-3 py-1 font-[family-name:var(--font-ibm-plex-mono)] text-[9px] tracking-[0.1em] text-green-light">
+                {publication.status}
+              </span>
+
+              <span className="font-[family-name:var(--font-ibm-plex-mono)] text-[10px] tracking-[0.08em] text-dim-text">
+                {publication.type.toUpperCase()}
+              </span>
+            </div>
+
+            <h3 className="mt-5 max-w-4xl text-2xl font-semibold leading-snug">
+              {publication.title}
+            </h3>
+
+            <p className="mt-3 font-[family-name:var(--font-ibm-plex-mono)] text-xs text-amber-light">
+              {publication.venue} · {publication.year}
+            </p>
+
+            <p className="mt-5 max-w-3xl leading-7 text-muted-text">
+              {publication.description}
+            </p>
+          </div>
+
+          <div className="flex items-start lg:justify-end">
+            {publication.href !== "#" ? (
+              <a
+                href={publication.href}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 border border-panel-border px-4 py-2.5 text-xs font-semibold transition hover:border-amber hover:text-amber-light"
+              >
+                VIEW PAPER
+                <ArrowIcon />
+              </a>
+            ) : (
+              <span className="border border-panel-border px-4 py-2.5 font-[family-name:var(--font-ibm-plex-mono)] text-[9px] tracking-[0.1em] text-dim-text">
+                LINK PENDING
+              </span>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section
+  id="builds"
+  className="border-b border-panel-border bg-background px-6 py-28 lg:px-10"
+>
+  <div className="mx-auto max-w-7xl">
+    <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+      <div>
+        <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.18em] text-amber">
+          03 // PC BUILDS
+        </p>
+
+        <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+          Systems built beyond the FPGA.
+        </h2>
+      </div>
+
+      <p className="max-w-lg leading-7 text-muted-text">
+        Personal computer builds that reflect my interest in component
+        selection, system assembly, performance tuning, cooling, and hardware
+        troubleshooting.
+      </p>
+    </div>
+
+    <div className="grid gap-6 lg:grid-cols-2">
+      {pcBuilds.map((build) => (
+        <article
+          key={build.number}
+          className="group overflow-hidden border border-panel-border bg-surface transition hover:border-green"
+        >
+          <div className="technical-grid relative flex min-h-72 items-center justify-center border-b border-panel-border bg-background-deep p-8">
+            <div className="absolute left-5 top-5 font-[family-name:var(--font-ibm-plex-mono)] text-xs text-amber">
+              BUILD // {build.number}
+            </div>
+
+            <div className="w-full max-w-sm border border-panel-border bg-surface/95 p-5 panel-shadow">
+              <div className="mb-5 flex items-center justify-between border-b border-panel-border pb-3">
+                <span className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.1em] text-green-light">
+                  SYSTEM CONFIGURATION
+                </span>
+
+                <StatusDot />
+              </div>
+
+              <div className="space-y-3 font-[family-name:var(--font-ibm-plex-mono)] text-xs">
+                <div className="grid grid-cols-[90px_1fr] gap-4">
+                  <span className="text-dim-text">CPU</span>
+                  <span>{build.processor}</span>
+                </div>
+
+                <div className="grid grid-cols-[90px_1fr] gap-4">
+                  <span className="text-dim-text">GPU</span>
+                  <span>{build.graphics}</span>
+                </div>
+
+                <div className="grid grid-cols-[90px_1fr] gap-4">
+                  <span className="text-dim-text">STATUS</span>
+                  <span className="text-green-light">OPERATIONAL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-7 sm:p-9">
+            <h3 className="text-2xl font-semibold">{build.title}</h3>
+
+            <p className="mt-4 leading-7 text-muted-text">
+              {build.description}
+            </p>
+
+            <div className="mt-7 flex flex-wrap gap-2">
+              {build.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="border border-panel-border bg-background-deep px-3 py-1.5 font-[family-name:var(--font-ibm-plex-mono)] text-[9px] tracking-[0.08em] text-green-pale"
+                >
+                  {tag.toUpperCase()}
+                </span>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              className="mt-8 flex items-center gap-2 text-sm font-semibold text-green-light transition hover:text-green-pale"
+            >
+              VIEW BUILD
+              <ArrowIcon />
+            </button>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
       <section id="profile" className="bg-background-deep px-6 py-28 lg:px-10">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.18em] text-amber">
-              02 // TECHNICAL PROFILE
+              04 // TECHNICAL PROFILE
             </p>
 
             <h2 className="mt-4 text-4xl font-semibold tracking-tight">
@@ -471,7 +708,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 sm:flex-row sm:items-end">
           <div>
             <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
-              03 // CONTACT
+              05 // CONTACT
             </p>
 
             <h2 className="mt-4 text-3xl font-semibold">
