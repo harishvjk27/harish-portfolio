@@ -1,117 +1,10 @@
-const projects = [
-  {
-    number: "01",
-    category: "FPGA COMMUNICATION",
-    title: "FPGA UART Communication & DSP Platform",
-    description:
-      "A modular SystemVerilog platform integrating UART transmission and reception, FIFO buffering, command parsing, multi-character response control, and DSP visualization.",
-    technologies: [
-      "SystemVerilog",
-      "Intel MAX 10",
-      "ModelSim",
-      "Quartus",
-      "CP2102",
-    ],
-    status: "HARDWARE VERIFIED",
-    visualTitle: "UART DATA PATH",
-    visualLines: [
-      "PC TERMINAL",
-      "UART RX",
-      "8-BYTE FIFO",
-      "COMMAND PARSER",
-      "RESPONSE FSM",
-      "UART TX",
-    ],
-    github: "https://github.com/harishvjk27",
-  },
-  {
-    number: "02",
-    category: "COMPUTER ARCHITECTURE",
-    title: "8-Bit CPU in SystemVerilog",
-    description:
-      "A modular processor featuring an ALU, four-register file, instruction decoder, program counter, instruction memory, and a multi-stage control FSM.",
-    technologies: [
-      "SystemVerilog",
-      "RTL",
-      "FPGA",
-      "ALU",
-      "Finite State Machines",
-    ],
-    status: "FPGA VALIDATED",
-    visualTitle: "PROCESSOR DATA PATH",
-    visualLines: [
-      "PROGRAM COUNTER",
-      "INSTRUCTION ROM",
-      "DECODER",
-      "REGISTER FILE",
-      "ALU",
-      "WRITEBACK",
-    ],
-    github: "https://github.com/harishvjk27",
-  },
-];
-
-const publications = [
-  {
-    number: "01",
-    title:
-      "Survey Instruments Used to Study Mental Health Among STEM Graduate Students",
-    venue: "IEEE Frontiers in Education Conference",
-    year: "2025",
-    type: "Peer-Reviewed Conference Publication",
-    description:
-      "A systematic examination of survey instruments used to study mental health among graduate students in STEM disciplines.",
-    status: "PUBLISHED",
-    href: "#",
-  },
-  {
-    number: "02",
-    title:
-      "Photoelicitation and Coping Strategies Among First-Generation and Low-SES Engineering Students",
-    venue: "ASEE Annual Conference",
-    year: "2026",
-    type: "Engineering Education Research",
-    description:
-      "Research examining coping strategies and academic experiences among first-generation and low-socioeconomic-status engineering students.",
-    status: "PUBLISHED",
-    href: "#",
-  },
-];
-
-const pcBuilds = [
-  {
-    number: "01",
-    title: "Personal Gaming and Engineering Workstation",
-    processor: "AMD Ryzen 7 7700X",
-    graphics: "NVIDIA RTX 3060",
-    description:
-      "A compact desktop configured for gaming, FPGA development, RTL simulation, programming, and general engineering coursework.",
-    tags: ["PC Assembly", "Thermal Management", "Troubleshooting"],
-  },
-  {
-    number: "02",
-    title: "Custom PC Build",
-    processor: "Processor details",
-    graphics: "Graphics details",
-    description:
-      "Add a concise description of the system, its purpose, and the decisions you made while selecting and assembling components.",
-    tags: ["Component Selection", "Cable Management", "System Validation"],
-  },
-];
-
-
-const skills = [
-  "SystemVerilog",
-  "Verilog",
-  "VHDL",
-  "RTL Design",
-  "FPGA Design",
-  "Computer Architecture",
-  "ModelSim",
-  "Cadence Xcelium",
-  "Intel Quartus Prime",
-  "Waveform Debugging",
-];
+import Link from "next/link";
+import {
+  pcBuilds,
+  projects,
+  publications,
+  skills,
+} from "../data/portfolio";
 
 function ArrowIcon() {
   return (
@@ -378,7 +271,7 @@ export default function Home() {
                   </h3>
 
                   <p className="mt-6 max-w-xl leading-7 text-muted-text">
-                    {project.description}
+                    {project.shortDescription}
                   </p>
 
                   <div className="mt-8 flex flex-wrap gap-2">
@@ -393,13 +286,13 @@ export default function Home() {
                   </div>
 
                   <div className="mt-10 flex flex-wrap gap-5">
-                    <a
-                      href="#"
-                      className="flex items-center gap-2 text-sm font-semibold text-green-light transition hover:text-green-pale"
-                    >
-                      VIEW PROJECT
-                      <ArrowIcon />
-                    </a>
+                    <Link
+             href={`/projects/${project.slug}`}
+             className="flex items-center gap-2 text-sm font-semibold text-green-light transition hover:text-green-pale"
+            >
+             VIEW PROJECT
+               <ArrowIcon />
+                  </Link>
 
                     <a
                       href={project.github}
@@ -481,13 +374,13 @@ export default function Home() {
               </p>
             </div>
 
-            <a
-              href="#"
-              className="flex items-center gap-3 border border-panel-border px-5 py-3 text-sm font-semibold transition hover:border-amber hover:text-amber-light"
-            >
-              VIEW SUMMARY
-              <ArrowIcon />
-            </a>
+            <Link
+  href="/projects/digital-calculator-chip"
+  className="flex items-center gap-3 border border-panel-border px-5 py-3 text-sm font-semibold transition hover:border-amber hover:text-amber-light"
+>
+  VIEW SUMMARY
+  <ArrowIcon />
+</Link>
           </article>
         </div>
       </section>
@@ -555,21 +448,27 @@ export default function Home() {
           </div>
 
           <div className="flex items-start lg:justify-end">
-            {publication.href !== "#" ? (
-              <a
-                href={publication.href}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 border border-panel-border px-4 py-2.5 text-xs font-semibold transition hover:border-amber hover:text-amber-light"
-              >
-                VIEW PAPER
-                <ArrowIcon />
-              </a>
-            ) : (
-              <span className="border border-panel-border px-4 py-2.5 font-[family-name:var(--font-ibm-plex-mono)] text-[9px] tracking-[0.1em] text-dim-text">
-                LINK PENDING
-              </span>
-            )}
+            <div className="flex flex-col items-start gap-3 lg:items-end">
+  <Link
+    href={`/publications/${publication.slug}`}
+    className="flex items-center gap-2 border border-panel-border px-4 py-2.5 text-xs font-semibold transition hover:border-green hover:text-green-light"
+  >
+    VIEW DETAILS
+    <ArrowIcon />
+  </Link>
+
+  {publication.href && (
+    <a
+      href={publication.href}
+      target="_blank"
+      rel="noreferrer"
+      className="flex items-center gap-2 text-xs text-muted-text transition hover:text-amber-light"
+    >
+      VIEW PAPER
+      <ArrowIcon />
+    </a>
+  )}
+</div>
           </div>
         </article>
       ))}
@@ -657,13 +556,13 @@ export default function Home() {
               ))}
             </div>
 
-            <button
-              type="button"
-              className="mt-8 flex items-center gap-2 text-sm font-semibold text-green-light transition hover:text-green-pale"
-            >
-              VIEW BUILD
-              <ArrowIcon />
-            </button>
+            <Link
+  href={`/builds/${build.slug}`}
+  className="mt-8 flex items-center gap-2 text-sm font-semibold text-green-light transition hover:text-green-pale"
+>
+  VIEW BUILD
+  <ArrowIcon />
+</Link>
           </div>
         </article>
       ))}
