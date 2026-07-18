@@ -2,261 +2,190 @@ import Image from "next/image";
 import Link from "next/link";
 
 import {
+  pcBuildGallery,
   pcBuilds,
   projects,
   publications,
   skills,
 } from "../data/portfolio";
 
-function ArrowIcon() {
+const navItems = [
+  ["Projects", "#projects"],
+  ["Publications", "#publications"],
+  ["PC builds", "#builds"],
+  ["Contact", "#contact"],
+];
+
+function TextLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
+    <Link
+      href={href}
+      className="inline-flex items-center gap-2 font-semibold text-green-light transition-colors hover:text-green-pale focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-light"
     >
-      <path d="M5 12h14M13 6l6 6-6 6" />
-    </svg>
+      {children}
+      <span aria-hidden="true">→</span>
+    </Link>
   );
 }
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background-deep text-main-text">
-      <header className="border-b border-panel-border/70 bg-background-deep">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 lg:px-8">
-          <a href="#top" className="text-sm font-semibold tracking-wide">
+    <main id="top" className="portfolio-background min-h-screen bg-background-deep text-main-text">
+      <header className="border-b border-panel-border/70 bg-background-deep/75 backdrop-blur-md">
+        <nav
+          aria-label="Primary navigation"
+          className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 lg:px-8"
+        >
+          <a
+            href="#top"
+            className="font-semibold tracking-tight transition-colors hover:text-green-light"
+          >
             Harish Vijayakumar
           </a>
 
-          <div className="hidden items-center gap-7 text-sm text-muted-text md:flex">
-            <a
-              href="#projects"
-              className="transition hover:text-green-light"
-            >
-              Projects
-            </a>
-
-            <a
-              href="#publications"
-              className="transition hover:text-green-light"
-            >
-              Publications
-            </a>
-
-            <a
-              href="#builds"
-              className="transition hover:text-green-light"
-            >
-              PC Builds
-            </a>
-
-            <a
-              href="#contact"
-              className="transition hover:text-green-light"
-            >
-              Contact
-            </a>
+          <div className="hidden items-center gap-6 text-sm text-muted-text sm:flex">
+            {navItems.map(([label, href]) => (
+              <a
+                key={href}
+                href={href}
+                className="transition-colors hover:text-green-light"
+              >
+                {label}
+              </a>
+            ))}
           </div>
         </nav>
       </header>
 
-      <section
-        id="top"
-        className="mx-auto grid min-h-[680px] max-w-6xl items-center gap-14 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:px-8"
-      >
-        <div>
-          <p className="font-[family-name:var(--font-ibm-plex-mono)] text-sm text-amber">
-            Computer Engineering at Georgia Tech
+      <section className="relative mx-auto grid max-w-7xl items-center gap-14 overflow-hidden px-6 py-20 sm:py-28 lg:grid-cols-[minmax(0,0.9fr)_minmax(480px,1.1fr)] lg:px-8 lg:py-32">
+        <div className="max-w-3xl">
+          <p className="inline-flex rounded-full border border-amber/25 bg-amber/10 px-4 py-2 text-sm font-medium text-amber-light">
+            Computer engineering student at Georgia Tech
           </p>
-
-          <h1 className="mt-5 max-w-3xl text-5xl font-semibold leading-[1.08] tracking-[-0.04em] sm:text-6xl">
+          <h1 className="mt-5 text-5xl font-semibold leading-[1.08] tracking-[-0.04em] sm:text-6xl">
             Hi, I&apos;m Harish.
           </h1>
-
-          <p className="mt-7 max-w-2xl text-xl leading-9 text-muted-text">
+          <p className="mt-7 text-xl leading-9 text-muted-text">
             I&apos;m a computer engineering student interested in FPGA
             development, RTL design, computer architecture, and digital
             hardware.
           </p>
-
-          <p className="mt-5 max-w-2xl leading-8 text-muted-text">
-            I enjoy building systems from the module level upward, verifying
-            their behavior through simulation, and testing them on physical
-            hardware. Outside of engineering projects, I also build and
-            troubleshoot custom PCs.
-          </p>
-
-          <div className="mt-9 flex flex-wrap gap-4">
+          <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
             <a
               href="#projects"
-              className="flex items-center gap-2 bg-green-light px-5 py-3 text-sm font-semibold text-background-deep transition hover:bg-green-pale"
+              className="rounded-md bg-green-light px-5 py-3 text-sm font-semibold text-background-deep shadow-[0_12px_34px_rgba(47,125,74,0.24)] transition hover:-translate-y-0.5 hover:bg-green-pale focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-light"
             >
               View my work
-              <ArrowIcon />
             </a>
-
             <a
               href="/Harish_Resume.pdf"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 border border-panel-border px-5 py-3 text-sm font-semibold transition hover:border-green-light hover:text-green-light"
+              className="rounded-md border border-panel-border bg-surface/70 px-5 py-3 text-sm font-semibold text-main-text transition hover:-translate-y-0.5 hover:border-green-light/60 hover:text-green-light"
             >
               Resume
-              <ArrowIcon />
             </a>
-
             <a
               href="https://github.com/harishvjk27"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 px-2 py-3 text-sm text-muted-text transition hover:text-green-light"
+              className="text-sm font-semibold text-muted-text transition-colors hover:text-green-light"
             >
               GitHub
-              <ArrowIcon />
             </a>
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-md">
-          <div className="absolute -inset-4 translate-x-3 translate-y-3 border border-green-dark bg-green-dark/20" />
-
-          <div className="relative aspect-[4/5] overflow-hidden border border-panel-border bg-surface">
+        <div className="photo-collage mx-auto grid w-full max-w-lg grid-cols-[0.78fr_1.22fr] grid-rows-[170px_150px] gap-3 sm:grid-rows-[190px_170px] lg:mx-0">
+          <div className="relative row-span-2 overflow-hidden rounded-xl border border-green-light/20 bg-surface shadow-2xl shadow-black/30 sm:row-span-2">
             <Image
               src="/harish-profile.jpg"
-              alt="Harish Vijayakumar"
+              alt="Portrait of Harish Vijayakumar"
               fill
               priority
-              sizes="(max-width: 1024px) 100vw, 420px"
+              sizes="(max-width: 640px) 38vw, (max-width: 1024px) 200px, 190px"
               className="object-cover"
+            />
+          </div>
+          <div className="relative overflow-hidden rounded-xl border border-green-light/20 bg-surface shadow-xl shadow-black/25">
+            <Image
+              src="/toronto-trip.webp"
+              alt="Harish visiting Toronto"
+              fill
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 300px, 240px"
+              className="object-cover object-[55%_70%] transition duration-500 hover:scale-[1.03]"
+            />
+          </div>
+          <div className="relative overflow-hidden rounded-xl border border-green-light/20 bg-surface shadow-xl shadow-black/25">
+            <Image
+              src="/pc-build.webp"
+              alt="A custom PC build in progress"
+              fill
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 300px, 240px"
+              className="object-cover object-[55%_68%] transition duration-500 hover:scale-[1.03]"
             />
           </div>
         </div>
       </section>
 
-      <section
-        id="projects"
-        className="border-t border-panel-border bg-background px-6 py-24 lg:px-8"
-      >
+      <section id="projects" className="border-t border-panel-border bg-background px-6 py-20 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-12 max-w-2xl">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Selected projects
-            </h2>
-
-            <p className="mt-4 leading-7 text-muted-text">
-              FPGA, RTL, processor-design, and digital-hardware projects that
-              I have designed, simulated, and tested.
+          <div className="grid gap-6 md:grid-cols-[240px_1fr] md:items-end">
+            <h2 className="text-3xl font-semibold tracking-tight">Selected projects</h2>
+            <p className="max-w-2xl leading-7 text-muted-text">
+              A closer look at the RTL systems I have taken from architecture and simulation through FPGA implementation and physical testing.
             </p>
           </div>
 
-          <div className="space-y-5">
-            {projects.map((project) => (
+          <article className="mt-12 grid overflow-hidden rounded-2xl border border-green/40 bg-[linear-gradient(135deg,rgba(47,125,74,0.18),rgba(13,24,18,0.92)_55%)] lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="flex min-h-64 flex-col justify-between border-b border-panel-border p-8 lg:border-r lg:border-b-0">
+              <p className="text-sm text-amber">Featured work</p>
+              <p className="mt-16 font-[family-name:var(--font-ibm-plex-mono)] text-sm leading-7 text-green-pale">
+                {projects[0].technologies.slice(0, 6).join(" · ")}
+              </p>
+            </div>
+            <div className="p-8 sm:p-10">
+              <p className="text-sm text-amber">{projects[0].category}</p>
+              <h3 className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">{projects[0].title}</h3>
+              <p className="mt-5 max-w-2xl leading-8 text-muted-text">{projects[0].shortDescription}</p>
+              <div className="mt-8">
+                <TextLink href={`/projects/${projects[0].slug}`}>Explore the full project</TextLink>
+              </div>
+            </div>
+          </article>
+
+          <div className="mt-6 grid gap-6 lg:grid-cols-2">
+            {projects.slice(1).map((project, index) => (
               <article
                 key={project.slug}
-                className="group grid gap-8 border-b border-panel-border py-9 first:border-t lg:grid-cols-[1fr_auto] lg:items-center"
+                className={`rounded-xl border border-panel-border bg-surface/60 p-7 ${index === 1 ? "lg:translate-y-8" : ""}`}
               >
-                <div>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-amber">
-                      {project.category}
-                    </p>
-
-                    <span className="text-dim-text">·</span>
-
-                    <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-green-light">
-                      {project.status}
-                    </p>
-                  </div>
-
-                  <h3 className="mt-4 text-2xl font-semibold">
-                    {project.title}
-                  </h3>
-
-                  <p className="mt-4 max-w-3xl leading-7 text-muted-text">
-                    {project.shortDescription}
-                  </p>
-
-                  <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
-                    {project.technologies.slice(0, 5).map((technology) => (
-                      <span
-                        key={technology}
-                        className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-dim-text"
-                      >
-                        {technology}
-                      </span>
-                    ))}
-                  </div>
+                <p className="text-sm text-amber">{project.category}</p>
+                <h3 className="mt-3 text-2xl font-semibold">{project.title}</h3>
+                <p className="mt-4 leading-7 text-muted-text">{project.shortDescription}</p>
+                <p className="mt-5 text-sm leading-6 text-dim-text">{project.technologies.slice(0, 5).join(" · ")}</p>
+                <div className="mt-6">
+                  <TextLink href={`/projects/${project.slug}`}>View project</TextLink>
                 </div>
-
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="flex items-center gap-2 text-sm font-semibold text-green-light transition group-hover:text-green-pale"
-                >
-                  View project
-                  <ArrowIcon />
-                </Link>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section
-        id="publications"
-        className="border-t border-panel-border bg-background-deep px-6 py-24 lg:px-8"
-      >
+      <section id="publications" className="border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-12 max-w-2xl">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Publications
-            </h2>
-
-            <p className="mt-4 leading-7 text-muted-text">
-              Engineering-education research focused on student experiences,
-              mental health, and coping strategies.
-            </p>
-          </div>
-
-          <div className="grid gap-5 lg:grid-cols-2">
+          <h2 className="text-3xl font-semibold tracking-tight">Publications</h2>
+          <div className="mt-10 grid gap-8 md:grid-cols-2">
             {publications.map((publication) => (
-              <article
-                key={publication.slug}
-                className="flex h-full flex-col border border-panel-border bg-surface p-7 transition hover:border-green"
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-amber">
-                    {publication.venue}
-                  </p>
-
-                  <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-green-light">
-                    {publication.year}
-                  </p>
-                </div>
-
-                <h3 className="mt-6 text-xl font-semibold leading-8">
-                  {publication.title}
-                </h3>
-
-                <p className="mt-4 flex-1 leading-7 text-muted-text">
-                  {publication.description}
+              <article key={publication.slug}>
+                <p className="text-sm text-amber">
+                  {publication.venue} · {publication.year}
                 </p>
-
-                <div className="mt-7 flex items-center justify-between gap-4">
-                  <span className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-dim-text">
-                    {publication.status}
-                  </span>
-
-                  <Link
-                    href={`/publications/${publication.slug}`}
-                    className="flex items-center gap-2 text-sm font-semibold text-green-light transition hover:text-green-pale"
-                  >
-                    View details
-                    <ArrowIcon />
-                  </Link>
+                <h3 className="mt-3 text-xl font-semibold leading-8">{publication.title}</h3>
+                <p className="mt-3 leading-7 text-muted-text">{publication.description}</p>
+                <div className="mt-5">
+                  <TextLink href={`/publications/${publication.slug}`}>View publication</TextLink>
                 </div>
               </article>
             ))}
@@ -264,130 +193,106 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="builds"
-        className="border-t border-panel-border bg-background px-6 py-24 lg:px-8"
-      >
+      <section id="builds" className="border-t border-panel-border bg-background px-6 py-20 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-12 max-w-2xl">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              PC builds
-            </h2>
-
-            <p className="mt-4 leading-7 text-muted-text">
-              Personal systems I have assembled, configured, upgraded, and
-              troubleshot.
+          <div className="grid gap-6 md:grid-cols-[240px_1fr] md:items-end">
+            <h2 className="text-3xl font-semibold tracking-tight">PC builds</h2>
+            <p className="max-w-2xl leading-7 text-muted-text">
+              Systems I have assembled for myself and friends, with attention to compatibility, thermals, cable routing, and dependable daily use.
             </p>
           </div>
-
-          <div className="grid gap-5 lg:grid-cols-2">
-            {pcBuilds.map((build) => (
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:items-start">
+            {pcBuilds.map((build, index) => (
               <article
                 key={build.slug}
-                className="border border-panel-border bg-surface p-7 transition hover:border-green"
+                className={`overflow-hidden rounded-xl border border-panel-border bg-surface/70 ${index === 1 ? "lg:mt-10" : ""}`}
               >
-                <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-amber">
-                  CUSTOM DESKTOP
-                </p>
-
-                <h3 className="mt-5 text-2xl font-semibold">{build.title}</h3>
-
-                <p className="mt-4 leading-7 text-muted-text">
-                  {build.description}
-                </p>
-
-                <dl className="mt-7 grid gap-4 border-t border-panel-border pt-6 sm:grid-cols-2">
-                  <div>
-                    <dt className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-dim-text">
-                      CPU
-                    </dt>
-                    <dd className="mt-2 text-sm">{build.processor}</dd>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={build.images[0].src}
+                    alt={build.images[0].alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition duration-500 hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="p-6">
+                  <p className="text-sm text-amber">{build.ownership}</p>
+                  <h3 className="mt-2 text-xl font-semibold">{build.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-muted-text">
+                    {build.processor} · {build.graphics} · {build.memory}
+                  </p>
+                  <div className="mt-5">
+                    <TextLink href={`/builds/${build.slug}`}>View build</TextLink>
                   </div>
-
-                  <div>
-                    <dt className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-dim-text">
-                      GPU
-                    </dt>
-                    <dd className="mt-2 text-sm">{build.graphics}</dd>
-                  </div>
-                </dl>
-
-                <Link
-                  href={`/builds/${build.slug}`}
-                  className="mt-8 flex items-center gap-2 text-sm font-semibold text-green-light transition hover:text-green-pale"
-                >
-                  View build
-                  <ArrowIcon />
-                </Link>
+                </div>
               </article>
             ))}
           </div>
+
+          <div className="mt-16 border-t border-panel-border pt-12 lg:mt-24">
+            <div className="grid gap-6 md:grid-cols-[240px_1fr]">
+              <div>
+                <p className="text-sm text-amber">Build gallery</p>
+                <h3 className="mt-2 text-2xl font-semibold">More systems and assembly work</h3>
+              </div>
+              <p className="max-w-2xl leading-7 text-muted-text">
+                A visual archive of compact layouts, cooling configurations, component installation, and work-in-progress systems.
+              </p>
+            </div>
+            <div className="mt-10 grid auto-rows-[170px] grid-cols-2 gap-3 sm:auto-rows-[190px] md:grid-cols-4">
+              {pcBuildGallery.map((image, index) => (
+                <figure
+                  key={image.src}
+                  className={`group relative overflow-hidden rounded-xl border border-panel-border bg-surface ${index === 0 ? "col-span-2 row-span-2" : ""} ${index === 4 ? "col-span-2" : ""}`}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes={index === 0 || index === 4 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
+                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                  />
+                </figure>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="border-t border-panel-border bg-background-deep px-6 py-20 lg:px-8">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[300px_1fr]">
+      <section className="border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
+        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[260px_1fr]">
           <div>
-            <h2 className="text-3xl font-semibold">Technical focus</h2>
-
-            <p className="mt-4 leading-7 text-muted-text">
-              Tools and subjects I have worked with through coursework,
-              research, and personal projects.
+            <h2 className="text-3xl font-semibold tracking-tight">Technical focus</h2>
+            <p className="mt-3 leading-7 text-muted-text">
+              Tools and subjects I use across coursework, research, and personal projects.
             </p>
           </div>
-
-          <div className="flex flex-wrap content-start gap-3">
+          <ul className="flex flex-wrap content-start gap-x-6 gap-y-3 text-muted-text">
             {skills.map((skill) => (
-              <span
-                key={skill}
-                className="border border-panel-border bg-surface px-4 py-2 text-sm text-muted-text"
-              >
-                {skill}
-              </span>
+              <li key={skill} className="border-b border-green-dark pb-1">{skill}</li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      <footer
-        id="contact"
-        className="border-t border-panel-border bg-background px-6 py-16 lg:px-8"
-      >
+      <footer id="contact" className="border-t border-panel-border bg-background px-6 py-16 lg:px-8">
         <div className="mx-auto flex max-w-6xl flex-col justify-between gap-8 sm:flex-row sm:items-end">
           <div>
-            <h2 className="text-2xl font-semibold">Get in touch</h2>
-
+            <h2 className="text-3xl font-semibold tracking-tight">Get in touch</h2>
             <p className="mt-3 max-w-xl leading-7 text-muted-text">
-              I&apos;m interested in FPGA, RTL, digital-design, and hardware
-              engineering opportunities.
+              I&apos;m interested in FPGA, RTL, digital design, and hardware engineering opportunities.
             </p>
-
             <a
               href="mailto:hvijayakumar32@gatech.edu"
-              className="mt-4 inline-block text-green-light transition hover:text-green-pale"
+              className="mt-4 inline-block text-green-light transition-colors hover:text-green-pale"
             >
               hvijayakumar32@gatech.edu
             </a>
           </div>
-
           <div className="flex gap-6 text-sm text-muted-text">
-            <a
-              href="https://github.com/harishvjk27"
-              target="_blank"
-              rel="noreferrer"
-              className="transition hover:text-green-light"
-            >
-              GitHub
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/harishvjk/"
-              target="_blank"
-              rel="noreferrer"
-              className="transition hover:text-green-light"
-            >
-              LinkedIn
-            </a>
+            <a href="https://github.com/harishvjk27" target="_blank" rel="noreferrer" className="hover:text-green-light">GitHub</a>
+            <a href="https://www.linkedin.com/in/harishvjk/" target="_blank" rel="noreferrer" className="hover:text-green-light">LinkedIn</a>
           </div>
         </div>
       </footer>

@@ -97,3 +97,23 @@ body {
     0 0 0 1px rgba(131, 201, 149, 0.04),
     0 24px 80px rgba(0, 0, 0, 0.32);
 }
+
+.portfolio-background {
+  background-image:
+    radial-gradient(circle at 82% 8%, rgba(47, 125, 74, 0.2), transparent 26rem),
+    radial-gradient(circle at 8% 24%, rgba(214, 164, 76, 0.08), transparent 20rem),
+    linear-gradient(rgba(131, 201, 149, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(131, 201, 149, 0.025) 1px, transparent 1px);
+  background-size: auto, auto, 64px 64px, 64px 64px;
+}
+
+.photo-collage {
+  transform: rotate(0.35deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

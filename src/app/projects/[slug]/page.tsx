@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "../../../data/portfolio";
@@ -138,7 +139,77 @@ export default async function ProjectPage({
         </div>
       </section>
 
-      <section className="bg-background px-6 py-20 lg:px-10">
+      {(project.images?.length || project.videos?.length) && (
+        <section className="bg-background px-6 py-24 lg:px-10">
+          <div className="mx-auto max-w-7xl">
+            <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
+              PROJECT MEDIA
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold">
+              Hardware, simulation, and demonstrations
+            </h2>
+
+            {project.images?.length ? (
+              <div className="mt-10 grid gap-6 lg:grid-cols-2">
+                {project.images.map((image) => (
+                  <figure
+                    key={image.src}
+                    className="overflow-hidden rounded-lg border border-panel-border bg-surface"
+                  >
+                    <div className="relative aspect-[16/9]">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-contain"
+                      />
+                    </div>
+                    <figcaption className="border-t border-panel-border px-5 py-4 text-sm leading-6 text-muted-text">
+                      {image.alt}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            ) : null}
+
+            {project.videos?.length ? (
+              <div className="mt-10 grid gap-6 lg:grid-cols-2">
+                {project.videos.map((video) => (
+                  <article
+                    key={video.youtubeId}
+                    className="overflow-hidden rounded-lg border border-panel-border bg-surface"
+                  >
+                    <div className="aspect-video bg-black">
+                      <iframe
+                        src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}`}
+                        title={video.title}
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="h-full w-full"
+                      />
+                    </div>
+                    <div className="flex items-center justify-between gap-4 border-t border-panel-border px-5 py-4">
+                      <h3 className="font-semibold">{video.title}</h3>
+                      <a
+                        href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="shrink-0 text-sm text-green-light transition hover:text-green-pale"
+                      >
+                        Open on YouTube
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </section>
+      )}
+
+      <section className="border-t border-panel-border bg-background px-6 py-20 lg:px-10">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 sm:flex-row sm:items-center">
           <div>
             <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-amber">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { pcBuilds } from "../../../data/portfolio";
@@ -31,7 +32,7 @@ export default async function BuildPage({
     ["MEMORY", build.memory],
     ["STORAGE", build.storage],
     ["MOTHERBOARD", build.motherboard],
-  ];
+  ].filter((item): item is [string, string] => Boolean(item[1]));
 
   return (
     <main className="min-h-screen bg-background-deep text-main-text">
@@ -53,7 +54,7 @@ export default async function BuildPage({
       <section className="technical-grid border-b border-panel-border px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
-            PERSONAL HARDWARE
+            {build.ownership.toUpperCase()}
           </p>
 
           <h1 className="mt-6 max-w-5xl text-5xl font-semibold leading-tight tracking-tight sm:text-6xl">
@@ -126,16 +127,33 @@ export default async function BuildPage({
       <section className="border-t border-panel-border bg-background-deep px-6 py-20 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
-            IMAGES COMING NEXT
+            BUILD PHOTOS
           </p>
-
-          <p className="mt-4 max-w-2xl leading-7 text-muted-text">
-            Finished-build photographs, internal component views, cable
-            management, cooling configuration, and setup images will be added
-            here.
-          </p>
+          <h2 className="mt-4 text-3xl font-semibold">The finished system</h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {build.images.map((image) => (
+              <figure
+                key={image.src}
+                className="overflow-hidden rounded-lg border border-panel-border bg-surface"
+              >
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="border-t border-panel-border px-5 py-4 text-sm text-muted-text">
+                  {image.alt}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
+
     </main>
   );
 }

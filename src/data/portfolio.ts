@@ -11,6 +11,14 @@ export type Project = {
   visualLines: string[];
   github: string;
   highlights: string[];
+  images?: {
+    src: string;
+    alt: string;
+  }[];
+  videos?: {
+    youtubeId: string;
+    title: string;
+  }[];
 };
 
 export type Publication = {
@@ -33,11 +41,16 @@ export type PcBuild = {
   processor: string;
   graphics: string;
   memory: string;
-  storage: string;
-  motherboard: string;
+  storage?: string;
+  motherboard?: string;
   description: string;
+  ownership: string;
   tags: string[];
   goals: string[];
+  images: {
+    src: string;
+    alt: string;
+  }[];
 };
 
 export const projects: Project[] = [
@@ -77,6 +90,21 @@ export const projects: Project[] = [
       "Verified module behavior with ModelSim simulations and waveform analysis.",
       "Validated serial communication using physical FPGA hardware and a CP2102 interface.",
     ],
+    images: [
+      {
+        src: "/fpga-project-navigator.png",
+        alt: "Quartus Project Navigator showing the synthesized FPGA design hierarchy and logic utilization",
+      },
+      {
+        src: "/fpga-uart-waveform.png",
+        alt: "ModelSim waveform showing UART transmit and FIFO signals during simulation",
+      },
+    ],
+    videos: [
+      { youtubeId: "NAK6CtVayck", title: "Project demonstration 1" },
+      { youtubeId: "d_OaONLjnS4", title: "Project demonstration 2" },
+      { youtubeId: "9YgWn7VIyAc", title: "Project demonstration 3" },
+    ],
   },
   {
     number: "02",
@@ -113,6 +141,9 @@ export const projects: Project[] = [
       "Created instruction decode and processor control logic.",
       "Developed a multi-stage FSM for instruction execution.",
       "Simulated processor behavior and validated the integrated design on FPGA hardware.",
+    ],
+    videos: [
+      { youtubeId: "Qf0wSjcDBiQ", title: "8-bit CPU demonstration" },
     ],
   },
   {
@@ -198,14 +229,13 @@ export const pcBuilds: PcBuild[] = [
   {
     number: "01",
     slug: "gaming-engineering-workstation",
-    title: "Gaming and Engineering Workstation",
-    processor: "AMD Ryzen 7 7700X",
+    title: "Personal Gaming and Engineering Workstation",
+    processor: "AMD Ryzen 7 5700X",
     graphics: "NVIDIA GeForce RTX 3060",
-    memory: "Add memory details",
-    storage: "Add storage details",
-    motherboard: "Add motherboard details",
+    memory: "32GB Corsair Vengeance",
     description:
-      "A custom desktop assembled for gaming, FPGA development, RTL simulation, programming, and engineering coursework, with an emphasis on component compatibility, cooling, and troubleshooting.",
+      "My personal desktop, assembled and configured for gaming, FPGA development, RTL simulation, programming, and engineering coursework.",
+    ownership: "Personal build",
     tags: [
       "PC Assembly",
       "Thermal Management",
@@ -218,6 +248,85 @@ export const pcBuilds: PcBuild[] = [
       "Maintain stable temperatures under sustained load.",
       "Allow straightforward future component upgrades.",
     ],
+    images: [
+      {
+        src: "/personal-build.webp",
+        alt: "Harish's personal Ryzen 7 and RTX 3060 desktop with red internal lighting",
+      },
+    ],
+  },
+  {
+    number: "02",
+    slug: "rtx-3070-friend-build",
+    title: "RTX 3070 Gaming Build",
+    processor: "Intel Core i7-9700K",
+    graphics: "NVIDIA GeForce RTX 3070 Founders Edition",
+    memory: "32GB G.Skill Trident",
+    description:
+      "A gaming desktop assembled for a friend around the RTX 3070 Founders Edition, with careful component installation, airflow planning, and system setup.",
+    ownership: "Friend build",
+    tags: ["PC Assembly", "Airflow", "Component Installation", "System Setup"],
+    goals: [
+      "Deliver strong gaming performance with the RTX 3070.",
+      "Maintain dependable airflow around the CPU and graphics card.",
+      "Complete a clean, reliable assembly for everyday use.",
+    ],
+    images: [
+      {
+        src: "/friend-rtx3070-build.webp",
+        alt: "Friend's Intel Core i7 and RTX 3070 Founders Edition gaming desktop",
+      },
+    ],
+  },
+  {
+    number: "03",
+    slug: "mini-itx-friend-build",
+    title: "Compact Mini-ITX Gaming Build",
+    processor: "AMD Ryzen 5 3600",
+    graphics: "AMD Radeon RX 6600 XT",
+    memory: "16GB",
+    description:
+      "A space-efficient Mini-ITX system assembled for a friend, balancing gaming performance, cooling, and cable management inside a compact enclosure.",
+    ownership: "Friend build",
+    tags: ["Mini-ITX", "Small Form Factor", "Cable Management", "Cooling"],
+    goals: [
+      "Fit capable gaming hardware into a compact footprint.",
+      "Preserve airflow despite tight component clearances.",
+      "Route power and cooling cables cleanly in limited space.",
+    ],
+    images: [
+      {
+        src: "/mini-itx-cpu.webp",
+        alt: "Mini-ITX build showing the Ryzen processor cooling and compact internal layout",
+      },
+      {
+        src: "/mini-itx-gpu.webp",
+        alt: "Mini-ITX build showing the Radeon RX 6600 XT installation",
+      },
+    ],
+  },
+];
+
+export const pcBuildGallery = [
+  {
+    src: "/mini-itx-build-1.webp",
+    alt: "Additional compact PC assembly with a white chassis",
+  },
+  {
+    src: "/mini-itx-build-2.webp",
+    alt: "Additional compact build showing its internal component layout",
+  },
+  {
+    src: "/extra-build-1.webp",
+    alt: "White small-form-factor build showing cooling and cable routing",
+  },
+  {
+    src: "/extra-build-2.webp",
+    alt: "White small-form-factor build showing the installed graphics card",
+  },
+  {
+    src: "/extra-build-3.webp",
+    alt: "RGB desktop with liquid cooling and a vertically mounted graphics card",
   },
 ];
 
