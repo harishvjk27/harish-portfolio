@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+
 import {
   pcBuilds,
   projects,
@@ -21,580 +23,327 @@ function ArrowIcon() {
   );
 }
 
-function StatusDot({
-  color = "green",
-}: {
-  color?: "green" | "amber" | "red";
-}) {
-  const colors = {
-    green: "bg-green-light shadow-[0_0_12px_rgba(131,201,149,0.65)]",
-    amber: "bg-amber shadow-[0_0_12px_rgba(214,164,76,0.55)]",
-    red: "bg-status-red shadow-[0_0_12px_rgba(184,87,79,0.55)]",
-  };
-
-  return <span className={`h-2 w-2 rounded-full ${colors[color]}`} />;
-}
-
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden bg-background-deep font-[family-name:var(--font-manrope)] text-main-text">
-      <div className="technical-grid hero-glow">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
-          <a
-            href="#top"
-            className="flex items-center gap-3 font-[family-name:var(--font-ibm-plex-mono)]"
-          >
-            <span className="flex h-9 w-9 items-center justify-center border border-panel-border bg-surface text-amber">
-              HV
-            </span>
-
-            <div>
-              <p className="text-sm font-semibold tracking-wide">
-                HARISH VIJAYAKUMAR
-              </p>
-              <p className="text-[10px] tracking-[0.2em] text-dim-text">
-                DIGITAL HARDWARE
-              </p>
-            </div>
+    <main className="min-h-screen bg-background-deep text-main-text">
+      <header className="border-b border-panel-border/70 bg-background-deep">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 lg:px-8">
+          <a href="#top" className="text-sm font-semibold tracking-wide">
+            Harish Vijayakumar
           </a>
 
-          <div className="hidden items-center gap-7 font-[family-name:var(--font-ibm-plex-mono)] text-xs text-muted-text lg:flex">
-  <a className="transition hover:text-green-light" href="#projects">
-    PROJECTS
-  </a>
+          <div className="hidden items-center gap-7 text-sm text-muted-text md:flex">
+            <a
+              href="#projects"
+              className="transition hover:text-green-light"
+            >
+              Projects
+            </a>
 
-  <a className="transition hover:text-green-light" href="#publications">
-    PUBLICATIONS
-  </a>
+            <a
+              href="#publications"
+              className="transition hover:text-green-light"
+            >
+              Publications
+            </a>
 
-  <a className="transition hover:text-green-light" href="#builds">
-    PC BUILDS
-  </a>
+            <a
+              href="#builds"
+              className="transition hover:text-green-light"
+            >
+              PC Builds
+            </a>
 
-  <a className="transition hover:text-green-light" href="#profile">
-    PROFILE
-  </a>
-
-  <a className="transition hover:text-green-light" href="#contact">
-    CONTACT
-  </a>
-</div>
-</nav>
-        <section
-          id="top"
-          className="mx-auto grid min-h-[760px] max-w-7xl items-center gap-16 px-6 py-20 lg:grid-cols-[1.15fr_0.85fr] lg:px-10"
-        >
-          <div>
-            <div className="mb-8 flex items-center gap-3 font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.18em] text-green-light">
-              <StatusDot />
-              SYSTEM ONLINE
-            </div>
-
-            <p className="mb-5 font-[family-name:var(--font-ibm-plex-mono)] text-sm tracking-[0.16em] text-amber">
-              COMPUTER ENGINEERING @ GEORGIA TECH
-            </p>
-
-            <h1 className="max-w-4xl text-5xl font-semibold leading-[1.05] tracking-[-0.045em] sm:text-6xl lg:text-7xl">
-              Building digital systems
-              <span className="block text-green-light">
-                from RTL to hardware.
-              </span>
-            </h1>
-
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-muted-text">
-              I design, simulate, and validate FPGA and digital hardware systems
-              using SystemVerilog, ModelSim, Intel Quartus Prime, and Cadence
-              tools.
-            </p>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href="#projects"
-                className="group flex items-center gap-3 bg-green-light px-6 py-3.5 text-sm font-semibold text-background-deep transition hover:bg-green-pale"
-              >
-                VIEW PROJECTS
-                <ArrowIcon />
-              </a>
-
-              <a
-                href="https://github.com/harishvjk27"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-3 border border-panel-border bg-surface/70 px-6 py-3.5 text-sm font-semibold transition hover:border-green hover:bg-surface-raised"
-              >
-                GITHUB
-                <ArrowIcon />
-              </a>
-
-              <a
-                href="/Harish_Resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-3 border border-panel-border px-6 py-3.5 text-sm font-semibold transition hover:border-amber hover:text-amber-light"
-              >
-                RESUME
-                <ArrowIcon />
-              </a>
-            </div>
-
-            <div className="mt-14 grid max-w-2xl grid-cols-2 gap-px overflow-hidden border border-panel-border bg-panel-border sm:grid-cols-4">
-              {[
-                ["02", "FPGA PROJECTS"],
-                ["115200", "UART BAUD"],
-                ["08-BIT", "CPU WIDTH"],
-                ["03", "RTL PROJECTS"],
-              ].map(([value, label]) => (
-                <div key={label} className="bg-background px-5 py-5">
-                  <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xl text-amber-light">
-                    {value}
-                  </p>
-                  <p className="mt-1 text-[10px] tracking-[0.12em] text-dim-text">
-                    {label}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <a
+              href="#contact"
+              className="transition hover:text-green-light"
+            >
+              Contact
+            </a>
           </div>
+        </nav>
+      </header>
 
-          <div className="panel-shadow relative border border-panel-border bg-surface/90 p-1">
-            <div className="border border-green-dark bg-background-deep">
-              <div className="flex items-center justify-between border-b border-panel-border px-5 py-4 font-[family-name:var(--font-ibm-plex-mono)]">
-                <div className="flex items-center gap-3">
-                  <StatusDot color="green" />
-                  <span className="text-xs tracking-[0.14em] text-green-light">
-                    HARDWARE PROFILE
-                  </span>
-                </div>
+      <section
+        id="top"
+        className="mx-auto grid min-h-[680px] max-w-6xl items-center gap-14 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:px-8"
+      >
+        <div>
+          <p className="font-[family-name:var(--font-ibm-plex-mono)] text-sm text-amber">
+            Computer Engineering at Georgia Tech
+          </p>
 
-                <span className="text-[10px] text-dim-text">REV 2026.07</span>
-              </div>
+          <h1 className="mt-5 max-w-3xl text-5xl font-semibold leading-[1.08] tracking-[-0.04em] sm:text-6xl">
+            Hi, I&apos;m Harish.
+          </h1>
 
-              <div className="space-y-1 p-5 font-[family-name:var(--font-ibm-plex-mono)] text-xs">
-                {[
-                  ["TARGET", "INTEL MAX 10"],
-                  ["PRIMARY HDL", "SYSTEMVERILOG"],
-                  ["FOCUS", "FPGA / RTL"],
-                  ["VERIFICATION", "MODELSIM / XCELIUM"],
-                  ["ARCHITECTURE", "DIGITAL SYSTEMS"],
-                  ["LOCATION", "ATLANTA, GA"],
-                ].map(([label, value]) => (
-                  <div
-                    key={label}
-                    className="grid grid-cols-[130px_1fr] border-b border-panel-border/60 py-3"
-                  >
-                    <span className="text-dim-text">{label}</span>
-                    <span className="text-main-text">{value}</span>
-                  </div>
-                ))}
-              </div>
+          <p className="mt-7 max-w-2xl text-xl leading-9 text-muted-text">
+            I&apos;m a computer engineering student interested in FPGA
+            development, RTL design, computer architecture, and digital
+            hardware.
+          </p>
 
-              <div className="px-5 pb-5">
-                <p className="mb-3 font-[family-name:var(--font-ibm-plex-mono)] text-[10px] tracking-[0.15em] text-amber">
-                  SIGNAL MONITOR
-                </p>
+          <p className="mt-5 max-w-2xl leading-8 text-muted-text">
+            I enjoy building systems from the module level upward, verifying
+            their behavior through simulation, and testing them on physical
+            hardware. Outside of engineering projects, I also build and
+            troubleshoot custom PCs.
+          </p>
 
-                <div className="relative h-32 overflow-hidden border border-panel-border bg-blue-dark/40">
-                  <svg
-                    viewBox="0 0 600 150"
-                    preserveAspectRatio="none"
-                    className="absolute inset-0 h-full w-full"
-                    aria-label="Decorative digital waveform"
-                  >
-                    <polyline
-                      points="0,100 60,100 60,35 125,35 125,100 185,100 185,55 245,55 245,100 315,100 315,25 390,25 390,100 455,100 455,60 520,60 520,100 600,100"
-                      fill="none"
-                      stroke="var(--green-light)"
-                      strokeWidth="3"
-                    />
+          <div className="mt-9 flex flex-wrap gap-4">
+            <a
+              href="#projects"
+              className="flex items-center gap-2 bg-green-light px-5 py-3 text-sm font-semibold text-background-deep transition hover:bg-green-pale"
+            >
+              View my work
+              <ArrowIcon />
+            </a>
 
-                    <polyline
-                      points="0,122 95,122 95,80 165,80 165,122 280,122 280,78 350,78 350,122 475,122 475,90 540,90 540,122 600,122"
-                      fill="none"
-                      stroke="var(--amber)"
-                      strokeWidth="2"
-                      opacity="0.75"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
+            <a
+              href="/Harish_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 border border-panel-border px-5 py-3 text-sm font-semibold transition hover:border-green-light hover:text-green-light"
+            >
+              Resume
+              <ArrowIcon />
+            </a>
+
+            <a
+              href="https://github.com/harishvjk27"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 px-2 py-3 text-sm text-muted-text transition hover:text-green-light"
+            >
+              GitHub
+              <ArrowIcon />
+            </a>
           </div>
-        </section>
-      </div>
+        </div>
+
+        <div className="relative mx-auto w-full max-w-md">
+          <div className="absolute -inset-4 translate-x-3 translate-y-3 border border-green-dark bg-green-dark/20" />
+
+          <div className="relative aspect-[4/5] overflow-hidden border border-panel-border bg-surface">
+            <Image
+              src="/harish-profile.jpg"
+              alt="Harish Vijayakumar"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 420px"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
 
       <section
         id="projects"
-        className="border-y border-panel-border bg-background px-6 py-28 lg:px-10"
+        className="border-t border-panel-border bg-background px-6 py-24 lg:px-8"
       >
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-            <div>
-              <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.18em] text-amber">
-                01 // FEATURED PROJECTS
-              </p>
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 max-w-2xl">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Selected projects
+            </h2>
 
-              <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-                Hardware backed by evidence.
-              </h2>
-            </div>
-
-            <p className="max-w-md leading-7 text-muted-text">
-              Each project includes RTL architecture, verification results, and
-              hardware validation rather than only a summary of features.
+            <p className="mt-4 leading-7 text-muted-text">
+              FPGA, RTL, processor-design, and digital-hardware projects that
+              I have designed, simulated, and tested.
             </p>
           </div>
 
-          <div className="space-y-10">
-            {projects.map((project, index) => (
+          <div className="space-y-5">
+            {projects.map((project) => (
               <article
-                key={project.title}
-                className="group grid overflow-hidden border border-panel-border bg-surface transition duration-300 hover:border-green lg:grid-cols-2"
+                key={project.slug}
+                className="group grid gap-8 border-b border-panel-border py-9 first:border-t lg:grid-cols-[1fr_auto] lg:items-center"
               >
-                <div
-                  className={`p-8 sm:p-10 lg:p-12 ${
-                    index % 2 === 1 ? "lg:order-2" : ""
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <p className="font-[family-name:var(--font-ibm-plex-mono)] text-sm text-amber">
-                      {project.number} / {project.category}
+                <div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-amber">
+                      {project.category}
                     </p>
 
-                    <div className="flex items-center gap-2 font-[family-name:var(--font-ibm-plex-mono)] text-[10px] text-green-light">
-                      <StatusDot />
+                    <span className="text-dim-text">·</span>
+
+                    <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-green-light">
                       {project.status}
-                    </div>
+                    </p>
                   </div>
 
-                  <h3 className="mt-10 max-w-xl text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+                  <h3 className="mt-4 text-2xl font-semibold">
                     {project.title}
                   </h3>
 
-                  <p className="mt-6 max-w-xl leading-7 text-muted-text">
+                  <p className="mt-4 max-w-3xl leading-7 text-muted-text">
                     {project.shortDescription}
                   </p>
 
-                  <div className="mt-8 flex flex-wrap gap-2">
-                    {project.technologies.map((technology) => (
+                  <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
+                    {project.technologies.slice(0, 5).map((technology) => (
                       <span
                         key={technology}
-                        className="border border-panel-border bg-background-deep px-3 py-1.5 font-[family-name:var(--font-ibm-plex-mono)] text-[10px] tracking-[0.08em] text-green-pale"
+                        className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-dim-text"
                       >
-                        {technology.toUpperCase()}
+                        {technology}
                       </span>
                     ))}
                   </div>
-
-                  <div className="mt-10 flex flex-wrap gap-5">
-                    <Link
-             href={`/projects/${project.slug}`}
-             className="flex items-center gap-2 text-sm font-semibold text-green-light transition hover:text-green-pale"
-            >
-             VIEW PROJECT
-               <ArrowIcon />
-                  </Link>
-
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-2 text-sm text-muted-text transition hover:text-amber-light"
-                    >
-                      GITHUB
-                      <ArrowIcon />
-                    </a>
-                  </div>
                 </div>
 
-                <div
-                  className={`technical-grid flex min-h-[420px] items-center justify-center border-t border-panel-border bg-background-deep p-8 lg:border-t-0 ${
-                    index % 2 === 1
-                      ? "lg:order-1 lg:border-r"
-                      : "lg:border-l"
-                  }`}
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="flex items-center gap-2 text-sm font-semibold text-green-light transition group-hover:text-green-pale"
                 >
-                  <div className="w-full max-w-md border border-panel-border bg-surface/95 p-6 panel-shadow">
-                    <div className="mb-6 flex items-center justify-between border-b border-panel-border pb-4">
-                      <span className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.12em] text-amber">
-                        {project.visualTitle}
-                      </span>
+                  View project
+                  <ArrowIcon />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                      <span className="font-[family-name:var(--font-ibm-plex-mono)] text-[9px] text-dim-text">
-                        LIVE PATH
-                      </span>
-                    </div>
+      <section
+        id="publications"
+        className="border-t border-panel-border bg-background-deep px-6 py-24 lg:px-8"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 max-w-2xl">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Publications
+            </h2>
 
-                    <div className="space-y-3">
-                      {project.visualLines.map((line, lineIndex) => (
-                        <div key={line}>
-                          <div className="flex items-center gap-4">
-                            <span className="flex h-7 w-7 items-center justify-center border border-green-dark bg-green-dark/30 font-[family-name:var(--font-ibm-plex-mono)] text-[10px] text-green-light">
-                              {String(lineIndex + 1).padStart(2, "0")}
-                            </span>
+            <p className="mt-4 leading-7 text-muted-text">
+              Engineering-education research focused on student experiences,
+              mental health, and coping strategies.
+            </p>
+          </div>
 
-                            <div className="flex-1 border border-panel-border bg-background px-4 py-3 font-[family-name:var(--font-ibm-plex-mono)] text-xs">
-                              {line}
-                            </div>
+          <div className="grid gap-5 lg:grid-cols-2">
+            {publications.map((publication) => (
+              <article
+                key={publication.slug}
+                className="flex h-full flex-col border border-panel-border bg-surface p-7 transition hover:border-green"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-amber">
+                    {publication.venue}
+                  </p>
 
-                            <StatusDot
-                              color={
-                                lineIndex === project.visualLines.length - 1
-                                  ? "amber"
-                                  : "green"
-                              }
-                            />
-                          </div>
+                  <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-green-light">
+                    {publication.year}
+                  </p>
+                </div>
 
-                          {lineIndex < project.visualLines.length - 1 && (
-                            <div className="ml-[13px] h-3 border-l border-green" />
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                <h3 className="mt-6 text-xl font-semibold leading-8">
+                  {publication.title}
+                </h3>
+
+                <p className="mt-4 flex-1 leading-7 text-muted-text">
+                  {publication.description}
+                </p>
+
+                <div className="mt-7 flex items-center justify-between gap-4">
+                  <span className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-dim-text">
+                    {publication.status}
+                  </span>
+
+                  <Link
+                    href={`/publications/${publication.slug}`}
+                    className="flex items-center gap-2 text-sm font-semibold text-green-light transition hover:text-green-pale"
+                  >
+                    View details
+                    <ArrowIcon />
+                  </Link>
                 </div>
               </article>
             ))}
           </div>
-
-          <article className="mt-10 grid gap-8 border border-panel-border bg-surface p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <p className="font-[family-name:var(--font-ibm-plex-mono)] text-sm text-amber">
-                03 / ASIC DESIGN FLOW
-              </p>
-
-              <h3 className="mt-4 text-2xl font-semibold">
-                Digital Calculator Chip Design
-              </h3>
-
-              <p className="mt-4 max-w-3xl leading-7 text-muted-text">
-                A 64-bit arithmetic controller implemented in SystemVerilog,
-                verified using Xcelium and SimVision, and synthesized through
-                Cadence Innovus with SRAM behavior validation.
-              </p>
-            </div>
-
-            <Link
-  href="/projects/digital-calculator-chip"
-  className="flex items-center gap-3 border border-panel-border px-5 py-3 text-sm font-semibold transition hover:border-amber hover:text-amber-light"
->
-  VIEW SUMMARY
-  <ArrowIcon />
-</Link>
-          </article>
         </div>
       </section>
 
-<section
-  id="publications"
-  className="border-b border-panel-border bg-background-deep px-6 py-28 lg:px-10"
->
-  <div className="mx-auto max-w-7xl">
-    <div className="mb-14 grid gap-6 lg:grid-cols-[1fr_0.7fr] lg:items-end">
-      <div>
-        <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.18em] text-amber">
-          02 // PUBLICATIONS
-        </p>
-
-        <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-          Research and published work.
-        </h2>
-      </div>
-
-      <p className="leading-7 text-muted-text">
-        Peer-reviewed engineering education research focused on student mental
-        health, coping strategies, academic stress, and retention.
-      </p>
-    </div>
-
-    <div className="space-y-5">
-      {publications.map((publication) => (
-        <article
-          key={publication.title}
-          className="group grid gap-8 border border-panel-border bg-surface p-7 transition hover:border-green sm:p-9 lg:grid-cols-[100px_1fr_auto]"
-        >
-          <div>
-            <p className="font-[family-name:var(--font-ibm-plex-mono)] text-2xl text-amber">
-              {publication.number}
-            </p>
-
-            <p className="mt-2 font-[family-name:var(--font-ibm-plex-mono)] text-[10px] tracking-[0.12em] text-dim-text">
-              {publication.year}
-            </p>
-          </div>
-
-          <div>
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="border border-green-dark bg-green-dark/30 px-3 py-1 font-[family-name:var(--font-ibm-plex-mono)] text-[9px] tracking-[0.1em] text-green-light">
-                {publication.status}
-              </span>
-
-              <span className="font-[family-name:var(--font-ibm-plex-mono)] text-[10px] tracking-[0.08em] text-dim-text">
-                {publication.type.toUpperCase()}
-              </span>
-            </div>
-
-            <h3 className="mt-5 max-w-4xl text-2xl font-semibold leading-snug">
-              {publication.title}
-            </h3>
-
-            <p className="mt-3 font-[family-name:var(--font-ibm-plex-mono)] text-xs text-amber-light">
-              {publication.venue} · {publication.year}
-            </p>
-
-            <p className="mt-5 max-w-3xl leading-7 text-muted-text">
-              {publication.description}
-            </p>
-          </div>
-
-          <div className="flex items-start lg:justify-end">
-            <div className="flex flex-col items-start gap-3 lg:items-end">
-  <Link
-    href={`/publications/${publication.slug}`}
-    className="flex items-center gap-2 border border-panel-border px-4 py-2.5 text-xs font-semibold transition hover:border-green hover:text-green-light"
-  >
-    VIEW DETAILS
-    <ArrowIcon />
-  </Link>
-
-  {publication.href && (
-    <a
-      href={publication.href}
-      target="_blank"
-      rel="noreferrer"
-      className="flex items-center gap-2 text-xs text-muted-text transition hover:text-amber-light"
-    >
-      VIEW PAPER
-      <ArrowIcon />
-    </a>
-  )}
-</div>
-          </div>
-        </article>
-      ))}
-    </div>
-  </div>
-</section>
-
-<section
-  id="builds"
-  className="border-b border-panel-border bg-background px-6 py-28 lg:px-10"
->
-  <div className="mx-auto max-w-7xl">
-    <div className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-      <div>
-        <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.18em] text-amber">
-          03 // PC BUILDS
-        </p>
-
-        <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-          Systems built beyond the FPGA.
-        </h2>
-      </div>
-
-      <p className="max-w-lg leading-7 text-muted-text">
-        Personal computer builds that reflect my interest in component
-        selection, system assembly, performance tuning, cooling, and hardware
-        troubleshooting.
-      </p>
-    </div>
-
-    <div className="grid gap-6 lg:grid-cols-2">
-      {pcBuilds.map((build) => (
-        <article
-          key={build.number}
-          className="group overflow-hidden border border-panel-border bg-surface transition hover:border-green"
-        >
-          <div className="technical-grid relative flex min-h-72 items-center justify-center border-b border-panel-border bg-background-deep p-8">
-            <div className="absolute left-5 top-5 font-[family-name:var(--font-ibm-plex-mono)] text-xs text-amber">
-              BUILD // {build.number}
-            </div>
-
-            <div className="w-full max-w-sm border border-panel-border bg-surface/95 p-5 panel-shadow">
-              <div className="mb-5 flex items-center justify-between border-b border-panel-border pb-3">
-                <span className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.1em] text-green-light">
-                  SYSTEM CONFIGURATION
-                </span>
-
-                <StatusDot />
-              </div>
-
-              <div className="space-y-3 font-[family-name:var(--font-ibm-plex-mono)] text-xs">
-                <div className="grid grid-cols-[90px_1fr] gap-4">
-                  <span className="text-dim-text">CPU</span>
-                  <span>{build.processor}</span>
-                </div>
-
-                <div className="grid grid-cols-[90px_1fr] gap-4">
-                  <span className="text-dim-text">GPU</span>
-                  <span>{build.graphics}</span>
-                </div>
-
-                <div className="grid grid-cols-[90px_1fr] gap-4">
-                  <span className="text-dim-text">STATUS</span>
-                  <span className="text-green-light">OPERATIONAL</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="p-7 sm:p-9">
-            <h3 className="text-2xl font-semibold">{build.title}</h3>
-
-            <p className="mt-4 leading-7 text-muted-text">
-              {build.description}
-            </p>
-
-            <div className="mt-7 flex flex-wrap gap-2">
-              {build.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="border border-panel-border bg-background-deep px-3 py-1.5 font-[family-name:var(--font-ibm-plex-mono)] text-[9px] tracking-[0.08em] text-green-pale"
-                >
-                  {tag.toUpperCase()}
-                </span>
-              ))}
-            </div>
-
-            <Link
-  href={`/builds/${build.slug}`}
-  className="mt-8 flex items-center gap-2 text-sm font-semibold text-green-light transition hover:text-green-pale"
->
-  VIEW BUILD
-  <ArrowIcon />
-</Link>
-          </div>
-        </article>
-      ))}
-    </div>
-  </div>
-</section>
-
-      <section id="profile" className="bg-background-deep px-6 py-28 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.18em] text-amber">
-              04 // TECHNICAL PROFILE
-            </p>
-
-            <h2 className="mt-4 text-4xl font-semibold tracking-tight">
-              Focused on digital hardware.
+      <section
+        id="builds"
+        className="border-t border-panel-border bg-background px-6 py-24 lg:px-8"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 max-w-2xl">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              PC builds
             </h2>
 
-            <p className="mt-6 max-w-xl leading-7 text-muted-text">
-              My work focuses on RTL design, FPGA implementation, computer
-              architecture, digital verification, and hardware bring-up.
+            <p className="mt-4 leading-7 text-muted-text">
+              Personal systems I have assembled, configured, upgraded, and
+              troubleshot.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-px overflow-hidden border border-panel-border bg-panel-border sm:grid-cols-3">
-            {skills.map((skill) => (
-              <div
-                key={skill}
-                className="bg-surface px-5 py-6 font-[family-name:var(--font-ibm-plex-mono)] text-xs text-green-pale transition hover:bg-surface-raised hover:text-amber-light"
+          <div className="grid gap-5 lg:grid-cols-2">
+            {pcBuilds.map((build) => (
+              <article
+                key={build.slug}
+                className="border border-panel-border bg-surface p-7 transition hover:border-green"
               >
-                {skill.toUpperCase()}
-              </div>
+                <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-amber">
+                  CUSTOM DESKTOP
+                </p>
+
+                <h3 className="mt-5 text-2xl font-semibold">{build.title}</h3>
+
+                <p className="mt-4 leading-7 text-muted-text">
+                  {build.description}
+                </p>
+
+                <dl className="mt-7 grid gap-4 border-t border-panel-border pt-6 sm:grid-cols-2">
+                  <div>
+                    <dt className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-dim-text">
+                      CPU
+                    </dt>
+                    <dd className="mt-2 text-sm">{build.processor}</dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-dim-text">
+                      GPU
+                    </dt>
+                    <dd className="mt-2 text-sm">{build.graphics}</dd>
+                  </div>
+                </dl>
+
+                <Link
+                  href={`/builds/${build.slug}`}
+                  className="mt-8 flex items-center gap-2 text-sm font-semibold text-green-light transition hover:text-green-pale"
+                >
+                  View build
+                  <ArrowIcon />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-panel-border bg-background-deep px-6 py-20 lg:px-8">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[300px_1fr]">
+          <div>
+            <h2 className="text-3xl font-semibold">Technical focus</h2>
+
+            <p className="mt-4 leading-7 text-muted-text">
+              Tools and subjects I have worked with through coursework,
+              research, and personal projects.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap content-start gap-3">
+            {skills.map((skill) => (
+              <span
+                key={skill}
+                className="border border-panel-border bg-surface px-4 py-2 text-sm text-muted-text"
+              >
+                {skill}
+              </span>
             ))}
           </div>
         </div>
@@ -602,43 +351,42 @@ export default function Home() {
 
       <footer
         id="contact"
-        className="border-t border-panel-border bg-background px-6 py-14 lg:px-10"
+        className="border-t border-panel-border bg-background px-6 py-16 lg:px-8"
       >
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 sm:flex-row sm:items-end">
+        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-8 sm:flex-row sm:items-end">
           <div>
-            <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
-              05 // CONTACT
-            </p>
+            <h2 className="text-2xl font-semibold">Get in touch</h2>
 
-            <h2 className="mt-4 text-3xl font-semibold">
-              Harish Vijayakumar
-            </h2>
+            <p className="mt-3 max-w-xl leading-7 text-muted-text">
+              I&apos;m interested in FPGA, RTL, digital-design, and hardware
+              engineering opportunities.
+            </p>
 
             <a
               href="mailto:hvijayakumar32@gatech.edu"
-              className="mt-3 block text-muted-text transition hover:text-green-light"
+              className="mt-4 inline-block text-green-light transition hover:text-green-pale"
             >
               hvijayakumar32@gatech.edu
             </a>
           </div>
 
-          <div className="flex gap-6 font-[family-name:var(--font-ibm-plex-mono)] text-xs">
+          <div className="flex gap-6 text-sm text-muted-text">
             <a
               href="https://github.com/harishvjk27"
               target="_blank"
               rel="noreferrer"
-              className="text-muted-text transition hover:text-green-light"
+              className="transition hover:text-green-light"
             >
-              GITHUB
+              GitHub
             </a>
 
             <a
               href="https://www.linkedin.com/in/harishvjk/"
               target="_blank"
               rel="noreferrer"
-              className="text-muted-text transition hover:text-green-light"
+              className="transition hover:text-green-light"
             >
-              LINKEDIN
+              LinkedIn
             </a>
           </div>
         </div>
