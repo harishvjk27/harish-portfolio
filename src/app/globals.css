@@ -111,6 +111,53 @@ body {
   transform: rotate(0.35deg);
 }
 
+.circuit-section {
+  position: relative;
+  isolation: isolate;
+  background-image:
+    linear-gradient(90deg, transparent 0 8%, rgba(131, 201, 149, 0.045) 8% 8.08%, transparent 8.08% 100%),
+    radial-gradient(circle at 8% 22%, rgba(214, 164, 76, 0.22) 0 2px, transparent 3px),
+    radial-gradient(circle at 92% 76%, rgba(131, 201, 149, 0.18) 0 2px, transparent 3px);
+}
+
+.circuit-section::after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 6%;
+  width: 110px;
+  height: 46px;
+  border-top: 1px solid rgba(214, 164, 76, 0.24);
+  border-right: 1px solid rgba(214, 164, 76, 0.24);
+  content: "";
+}
+
+.hardware-card {
+  position: relative;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.hardware-card::before {
+  position: absolute;
+  z-index: 2;
+  top: -1px;
+  left: 24px;
+  width: 52px;
+  height: 2px;
+  background: var(--amber);
+  content: "";
+}
+
+.hardware-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(131, 201, 149, 0.48);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     scroll-behavior: auto !important;

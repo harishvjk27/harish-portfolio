@@ -53,11 +53,7 @@ export default async function BuildPage({
 
       <section className="technical-grid border-b border-panel-border px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
-            {build.ownership.toUpperCase()}
-          </p>
-
-          <h1 className="mt-6 max-w-5xl text-5xl font-semibold leading-tight tracking-tight sm:text-6xl">
+          <h1 className="max-w-5xl text-5xl font-semibold leading-tight tracking-tight sm:text-6xl">
             {build.title}
           </h1>
 
@@ -79,8 +75,8 @@ export default async function BuildPage({
       </section>
 
       <section className="bg-background px-6 py-24 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
-          <div>
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
             <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
               01 // SYSTEM SPECIFICATIONS
             </p>
@@ -100,27 +96,6 @@ export default async function BuildPage({
               ))}
             </div>
           </div>
-
-          <div>
-            <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
-              02 // BUILD GOALS
-            </p>
-
-            <div className="mt-8 space-y-4">
-              {build.goals.map((goal, index) => (
-                <div
-                  key={goal}
-                  className="flex gap-5 border border-panel-border bg-surface p-5"
-                >
-                  <span className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-green-light">
-                    0{index + 1}
-                  </span>
-
-                  <p className="leading-7 text-muted-text">{goal}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
@@ -132,7 +107,7 @@ export default async function BuildPage({
           <h2 className="mt-4 text-3xl font-semibold">The finished system</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {build.images.map((image) => (
-              <figure
+              <div
                 key={image.src}
                 className="overflow-hidden rounded-lg border border-panel-border bg-surface"
               >
@@ -142,13 +117,10 @@ export default async function BuildPage({
                     alt={image.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
+                    className="object-contain"
                   />
                 </div>
-                <figcaption className="border-t border-panel-border px-5 py-4 text-sm text-muted-text">
-                  {image.alt}
-                </figcaption>
-              </figure>
+              </div>
             ))}
           </div>
         </div>

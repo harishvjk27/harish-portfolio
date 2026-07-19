@@ -70,6 +70,12 @@ export default function Home() {
             development, RTL design, computer architecture, and digital
             hardware.
           </p>
+          <p className="mt-5 max-w-2xl leading-8 text-muted-text">
+            Right now, I&apos;m focused on writing and verifying RTL, exploring
+            processor design, and turning simulated systems into working FPGA
+            hardware. Outside that work, I enjoy building and troubleshooting
+            custom PCs and studying mental health in engineering education.
+          </p>
           <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
             <a
               href="#projects"
@@ -128,7 +134,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="border-t border-panel-border bg-background px-6 py-20 sm:py-24 lg:px-8">
+      <section id="projects" className="circuit-section border-t border-panel-border bg-background px-6 py-20 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-6 md:grid-cols-[240px_1fr] md:items-end">
             <h2 className="text-3xl font-semibold tracking-tight">Selected projects</h2>
@@ -137,35 +143,27 @@ export default function Home() {
             </p>
           </div>
 
-          <article className="mt-12 grid overflow-hidden rounded-2xl border border-green/40 bg-[linear-gradient(135deg,rgba(47,125,74,0.18),rgba(13,24,18,0.92)_55%)] lg:grid-cols-[0.8fr_1.2fr]">
-            <div className="flex min-h-64 flex-col justify-between border-b border-panel-border p-8 lg:border-r lg:border-b-0">
-              <p className="text-sm text-amber">Featured work</p>
-              <p className="mt-16 font-[family-name:var(--font-ibm-plex-mono)] text-sm leading-7 text-green-pale">
-                {projects[0].technologies.slice(0, 6).join(" · ")}
-              </p>
-            </div>
-            <div className="p-8 sm:p-10">
-              <p className="text-sm text-amber">{projects[0].category}</p>
-              <h3 className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">{projects[0].title}</h3>
-              <p className="mt-5 max-w-2xl leading-8 text-muted-text">{projects[0].shortDescription}</p>
-              <div className="mt-8">
-                <TextLink href={`/projects/${projects[0].slug}`}>Explore the full project</TextLink>
-              </div>
-            </div>
-          </article>
-
-          <div className="mt-6 grid gap-6 lg:grid-cols-2">
-            {projects.slice(1).map((project, index) => (
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {projects.map((project) => (
               <article
                 key={project.slug}
-                className={`rounded-xl border border-panel-border bg-surface/60 p-7 ${index === 1 ? "lg:translate-y-8" : ""}`}
+                className="hardware-card flex h-full flex-col overflow-hidden rounded-xl border border-panel-border bg-surface/85"
               >
-                <p className="text-sm text-amber">{project.category}</p>
-                <h3 className="mt-3 text-2xl font-semibold">{project.title}</h3>
-                <p className="mt-4 leading-7 text-muted-text">{project.shortDescription}</p>
-                <p className="mt-5 text-sm leading-6 text-dim-text">{project.technologies.slice(0, 5).join(" · ")}</p>
-                <div className="mt-6">
-                  <TextLink href={`/projects/${project.slug}`}>View project</TextLink>
+                <div className="flex items-center justify-between gap-4 border-b border-panel-border bg-background-deep/45 px-6 py-4">
+                  <p className="text-xs font-semibold tracking-[0.08em] text-amber">{project.category}</p>
+                  <p className="text-xs text-green-light">{project.status}</p>
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-2xl font-semibold leading-tight">{project.title}</h3>
+                  <p className="mt-4 leading-7 text-muted-text">{project.shortDescription}</p>
+                  <div className="mt-6 border-l-2 border-green-dark pl-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-dim-text">Technical focus</p>
+                    <p className="mt-2 text-sm leading-6 text-green-pale">{project.technologies.slice(0, 5).join(" · ")}</p>
+                  </div>
+                  <p className="mt-6 text-sm leading-6 text-muted-text">{project.highlights[0]}</p>
+                  <div className="mt-auto pt-7">
+                    <TextLink href={`/projects/${project.slug}`}>View project</TextLink>
+                  </div>
                 </div>
               </article>
             ))}
@@ -193,19 +191,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="builds" className="border-t border-panel-border bg-background px-6 py-20 sm:py-24 lg:px-8">
-        <div className="mx-auto max-w-6xl">
+      <section id="builds" className="circuit-section border-t border-panel-border bg-background px-6 py-20 sm:py-24 lg:px-8">
+        <div className="mx-auto max-w-7xl">
           <div className="grid gap-6 md:grid-cols-[240px_1fr] md:items-end">
             <h2 className="text-3xl font-semibold tracking-tight">PC builds</h2>
             <p className="max-w-2xl leading-7 text-muted-text">
               Systems I have assembled for myself and friends, with attention to compatibility, thermals, cable routing, and dependable daily use.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:items-start">
-            {pcBuilds.map((build, index) => (
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            {pcBuilds.map((build) => (
               <article
                 key={build.slug}
-                className={`overflow-hidden rounded-xl border border-panel-border bg-surface/70 ${index === 1 ? "lg:mt-10" : ""}`}
+                className="hardware-card flex h-full flex-col overflow-hidden rounded-xl border border-panel-border bg-surface/85"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -216,46 +214,44 @@ export default function Home() {
                     className="object-cover transition duration-500 hover:scale-[1.03]"
                   />
                 </div>
-                <div className="p-6">
-                  <p className="text-sm text-amber">{build.ownership}</p>
-                  <h3 className="mt-2 text-xl font-semibold">{build.title}</h3>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-xl font-semibold">{build.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-muted-text">
                     {build.processor} · {build.graphics} · {build.memory}
                   </p>
-                  <div className="mt-5">
+                  <div className="mt-auto pt-6">
                     <TextLink href={`/builds/${build.slug}`}>View build</TextLink>
                   </div>
                 </div>
               </article>
             ))}
-          </div>
-
-          <div className="mt-16 border-t border-panel-border pt-12 lg:mt-24">
-            <div className="grid gap-6 md:grid-cols-[240px_1fr]">
-              <div>
-                <p className="text-sm text-amber">Build gallery</p>
-                <h3 className="mt-2 text-2xl font-semibold">More systems and assembly work</h3>
+            <Link
+              href="/builds/gallery"
+              className="hardware-card group flex h-full flex-col overflow-hidden rounded-xl border border-amber/35 bg-surface/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-light"
+            >
+              <div className="grid aspect-[4/3] grid-cols-2 grid-rows-2 gap-1 overflow-hidden bg-background-deep p-1">
+                {pcBuildGallery.slice(0, 4).map((image, index) => (
+                  <div key={image.src} className={`relative overflow-hidden ${index === 0 ? "row-span-2" : ""}`}>
+                    <Image
+                      src={image.src}
+                      alt=""
+                      fill
+                      sizes="(max-width: 640px) 50vw, 15vw"
+                      className="object-cover transition duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                ))}
               </div>
-              <p className="max-w-2xl leading-7 text-muted-text">
-                A visual archive of compact layouts, cooling configurations, component installation, and work-in-progress systems.
-              </p>
-            </div>
-            <div className="mt-10 grid auto-rows-[170px] grid-cols-2 gap-3 sm:auto-rows-[190px] md:grid-cols-4">
-              {pcBuildGallery.map((image, index) => (
-                <figure
-                  key={image.src}
-                  className={`group relative overflow-hidden rounded-xl border border-panel-border bg-surface ${index === 0 ? "col-span-2 row-span-2" : ""} ${index === 4 ? "col-span-2" : ""}`}
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    sizes={index === 0 || index === 4 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
-                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
-                  />
-                </figure>
-              ))}
-            </div>
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="text-xl font-semibold">Other builds and assembly work</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-text">
+                  Browse compact systems, cooling layouts, component installations, and works in progress.
+                </p>
+                <span className="mt-auto pt-6 font-semibold text-green-light transition group-hover:text-green-pale">
+                  Open gallery →
+                </span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>

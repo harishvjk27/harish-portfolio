@@ -9,7 +9,7 @@ export type Project = {
   status: string;
   visualTitle: string;
   visualLines: string[];
-  github: string;
+  github: string | null;
   highlights: string[];
   images?: {
     src: string;
@@ -82,7 +82,8 @@ export const projects: Project[] = [
       "RESPONSE FSM",
       "UART TX",
     ],
-    github: "https://github.com/harishvjk27",
+    github:
+      "https://github.com/harishvjk27/QuartusProjects/tree/main/fpga-sensor-accelerator",
     highlights: [
       "Implemented UART receive and transmit modules in SystemVerilog.",
       "Integrated an 8-byte FIFO for buffered serial communication.",
@@ -134,7 +135,8 @@ export const projects: Project[] = [
       "ALU",
       "WRITEBACK",
     ],
-    github: "https://github.com/harishvjk27",
+    github:
+      "https://github.com/harishvjk27/QuartusProjects/tree/main/8-bit-cpu",
     highlights: [
       "Designed an 8-bit arithmetic logic unit supporting core processor operations.",
       "Implemented a four-register storage architecture.",
@@ -173,13 +175,19 @@ export const projects: Project[] = [
       "SYNTHESIS",
       "INNOVUS",
     ],
-    github: "https://github.com/harishvjk27",
+    github: null,
     highlights: [
       "Implemented a 64-bit arithmetic controller in SystemVerilog.",
       "Developed testbench logic for functional verification.",
       "Analyzed simulation behavior using Xcelium and SimVision.",
       "Explored synthesis and physical implementation using Cadence Innovus.",
       "Validated arithmetic and SRAM-related behavior through simulation.",
+    ],
+    images: [
+      {
+        src: "/calculator-chip-drc.webp",
+        alt: "Cadence Innovus physical layout and a completed design-rule check reporting zero violations",
+      },
     ],
   },
 ];
@@ -196,7 +204,7 @@ export const publications: Publication[] = [
     description:
       "A systematic examination of survey instruments used to study mental health among graduate students in STEM disciplines.",
     status: "PUBLISHED",
-    href: null,
+    href: "https://ieeexplore.ieee.org/document/11328435",
     topics: [
       "Engineering Education",
       "Graduate Student Mental Health",
@@ -215,7 +223,7 @@ export const publications: Publication[] = [
     description:
       "Research examining coping strategies and academic experiences among first-generation and low-socioeconomic-status engineering students.",
     status: "PUBLISHED",
-    href: null,
+    href: "https://nemo.asee.org/public/conferences/374/papers/51850/view",
     topics: [
       "Engineering Education",
       "Photoelicitation",
@@ -317,12 +325,8 @@ export const pcBuildGallery = [
     alt: "Additional compact build showing its internal component layout",
   },
   {
-    src: "/extra-build-1.webp",
-    alt: "White small-form-factor build showing cooling and cable routing",
-  },
-  {
-    src: "/extra-build-2.webp",
-    alt: "White small-form-factor build showing the installed graphics card",
+    src: "/ritesh-pc.webp",
+    alt: "Ritesh's PC during assembly",
   },
   {
     src: "/extra-build-3.webp",
@@ -341,4 +345,12 @@ export const skills = [
   "Cadence Xcelium",
   "Intel Quartus Prime",
   "Waveform Debugging",
+  "RTL Verification",
+  "Digital Logic Design",
+  "Finite State Machines",
+  "UART",
+  "FIFO Design",
+  "ASIC Physical Design",
+  "Cadence Innovus",
+  "PC Assembly & Troubleshooting",
 ];

@@ -117,30 +117,8 @@ export default async function ProjectPage({
         </div>
       </section>
 
-      <section className="border-y border-panel-border bg-background-deep px-6 py-24 lg:px-10">
-        <div className="mx-auto max-w-7xl">
-          <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
-            02 // TECHNICAL HIGHLIGHTS
-          </p>
-
-          <div className="mt-10 grid gap-px overflow-hidden border border-panel-border bg-panel-border md:grid-cols-2">
-            {project.highlights.map((highlight, index) => (
-              <div key={highlight} className="bg-surface p-7">
-                <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-green-light">
-                  0{index + 1}
-                </p>
-
-                <p className="mt-4 leading-7 text-muted-text">
-                  {highlight}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {(project.images?.length || project.videos?.length) && (
-        <section className="bg-background px-6 py-24 lg:px-10">
+        <section className="border-y border-panel-border bg-background-deep px-6 py-24 lg:px-10">
           <div className="mx-auto max-w-7xl">
             <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
               PROJECT MEDIA
@@ -152,7 +130,7 @@ export default async function ProjectPage({
             {project.images?.length ? (
               <div className="mt-10 grid gap-6 lg:grid-cols-2">
                 {project.images.map((image) => (
-                  <figure
+                  <div
                     key={image.src}
                     className="overflow-hidden rounded-lg border border-panel-border bg-surface"
                   >
@@ -165,10 +143,7 @@ export default async function ProjectPage({
                         className="object-contain"
                       />
                     </div>
-                    <figcaption className="border-t border-panel-border px-5 py-4 text-sm leading-6 text-muted-text">
-                      {image.alt}
-                    </figcaption>
-                  </figure>
+                  </div>
                 ))}
               </div>
             ) : null}
@@ -209,6 +184,30 @@ export default async function ProjectPage({
         </section>
       )}
 
+      <section className="border-y border-panel-border bg-background-deep px-6 py-24 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
+            TECHNICAL HIGHLIGHTS
+          </p>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-6">
+            {project.highlights.map((highlight, index) => (
+              <div
+                key={highlight}
+                className={`border border-panel-border bg-surface p-7 ${index < 3 ? "lg:col-span-2" : "lg:col-span-3"}`}
+              >
+                <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-green-light">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+
+                <p className="mt-4 leading-7 text-muted-text">{highlight}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {project.github ? (
       <section className="border-t border-panel-border bg-background px-6 py-20 lg:px-10">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 sm:flex-row sm:items-center">
           <div>
@@ -231,6 +230,7 @@ export default async function ProjectPage({
           </a>
         </div>
       </section>
+      ) : null}
     </main>
   );
 }
