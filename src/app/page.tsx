@@ -11,8 +11,8 @@ import {
 
 const navItems = [
   ["Projects", "#projects"],
-  ["Publications", "#publications"],
-  ["PC builds", "#builds"],
+  ["Research", "#publications"],
+  ["Builds", "#builds"],
   ["Contact", "#contact"],
 ];
 
@@ -31,106 +31,174 @@ function TextLink({ href, children }: { href: string; children: React.ReactNode 
 export default function Home() {
   return (
     <main id="top" className="portfolio-background min-h-screen bg-background-deep text-main-text">
-      <header className="border-b border-panel-border/70 bg-background-deep/75 backdrop-blur-md">
+      <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6">
         <nav
           aria-label="Primary navigation"
-          className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 lg:px-8"
+          className="nav-shell mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-2xl border border-panel-border/80 px-3 py-3 shadow-2xl shadow-black/25 backdrop-blur-xl sm:px-4"
         >
           <a
             href="#top"
-            className="font-semibold tracking-tight transition-colors hover:text-green-light"
+            aria-label="Harish Vijayakumar — back to top"
+            className="group flex items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-light"
           >
-            Harish Vijayakumar
+            <span className="brand-chip grid h-11 w-11 place-items-center rounded-xl font-[family-name:var(--font-ibm-plex-mono)] text-sm font-semibold text-background-deep transition group-hover:rotate-[-3deg]">
+              HV
+            </span>
+            <span className="hidden sm:block">
+              <span className="block text-sm font-semibold tracking-tight">Harish Vijayakumar</span>
+              <span className="mt-0.5 block font-[family-name:var(--font-ibm-plex-mono)] text-[10px] tracking-[0.14em] text-green-light">
+                RTL · FPGA · HARDWARE
+              </span>
+            </span>
           </a>
 
-          <div className="hidden items-center gap-6 text-sm text-muted-text sm:flex">
+          <div className="hidden items-center rounded-xl border border-panel-border/70 bg-background-deep/45 p-1 text-sm text-muted-text md:flex">
             {navItems.map(([label, href]) => (
               <a
                 key={href}
                 href={href}
-                className="transition-colors hover:text-green-light"
+                className="rounded-lg px-4 py-2 transition hover:bg-green-dark/65 hover:text-green-pale"
               >
                 {label}
               </a>
             ))}
           </div>
+
+          <div className="flex items-center gap-1 text-sm md:hidden">
+            <a href="#projects" className="rounded-lg px-3 py-2 text-green-pale hover:bg-green-dark/60">
+              Work
+            </a>
+            <a href="#contact" className="rounded-lg px-3 py-2 text-green-pale hover:bg-green-dark/60">
+              Contact
+            </a>
+          </div>
         </nav>
       </header>
 
-      <section className="relative mx-auto grid max-w-7xl items-center gap-14 overflow-hidden px-6 py-20 sm:py-28 lg:grid-cols-[minmax(0,0.9fr)_minmax(480px,1.1fr)] lg:px-8 lg:py-32">
-        <div className="max-w-3xl">
-          <p className="inline-flex rounded-full border border-amber/25 bg-amber/10 px-4 py-2 text-sm font-medium text-amber-light">
-            Computer engineering student at Georgia Tech
-          </p>
-          <h1 className="mt-5 text-5xl font-semibold leading-[1.08] tracking-[-0.04em] sm:text-6xl">
-            Hi, I&apos;m Harish.
-          </h1>
-          <p className="mt-7 text-xl leading-9 text-muted-text">
-            I&apos;m a computer engineering student interested in FPGA
-            development, RTL design, computer architecture, and digital
-            hardware.
-          </p>
-          <p className="mt-5 max-w-2xl leading-8 text-muted-text">
-            Right now, I&apos;m focused on writing and verifying RTL, exploring
-            processor design, and turning simulated systems into working FPGA
-            hardware. Outside that work, I enjoy building and troubleshooting
-            custom PCs and studying mental health in engineering education.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <a
-              href="#projects"
-              className="rounded-md bg-green-light px-5 py-3 text-sm font-semibold text-background-deep shadow-[0_12px_34px_rgba(47,125,74,0.24)] transition hover:-translate-y-0.5 hover:bg-green-pale focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-light"
-            >
-              View my work
-            </a>
-            <a
-              href="/Harish_Resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md border border-panel-border bg-surface/70 px-5 py-3 text-sm font-semibold text-main-text transition hover:-translate-y-0.5 hover:border-green-light/60 hover:text-green-light"
-            >
-              Resume
-            </a>
-            <a
-              href="https://github.com/harishvjk27"
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm font-semibold text-muted-text transition-colors hover:text-green-light"
-            >
-              GitHub
-            </a>
+      <section className="relative mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-28 lg:px-8 lg:py-32">
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+          <div>
+            <p className="inline-flex rounded-full border border-amber/25 bg-amber/10 px-4 py-2 text-sm font-medium text-amber-light">
+              CompE at Georgia Tech
+            </p>
+            <h1 className="mt-5 text-5xl font-semibold leading-[1.08] tracking-[-0.04em] sm:text-6xl">
+              Hi, I&apos;m Harish.
+            </h1>
+          </div>
+          <div>
+            <p className="max-w-2xl text-xl leading-9 text-muted-text">
+              I design digital hardware, explore how processors work, and enjoy
+              following an idea from RTL and simulation to a physical system.
+            </p>
+            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <a
+                href="#projects"
+                className="rounded-md bg-green-light px-5 py-3 text-sm font-semibold text-background-deep shadow-[0_12px_34px_rgba(47,125,74,0.24)] transition hover:-translate-y-0.5 hover:bg-green-pale focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-light"
+              >
+                Projects
+              </a>
+              <a
+                href="/Harish_Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-md border border-panel-border bg-surface/70 px-5 py-3 text-sm font-semibold text-main-text transition hover:-translate-y-0.5 hover:border-green-light/60 hover:text-green-light"
+              >
+                Resume
+              </a>
+              <a
+                href="https://github.com/harishvjk27"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm font-semibold text-muted-text transition-colors hover:text-green-light"
+              >
+                GitHub
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="photo-collage mx-auto grid w-full max-w-lg grid-cols-[0.78fr_1.22fr] grid-rows-[170px_150px] gap-3 sm:grid-rows-[190px_170px] lg:mx-0">
-          <div className="relative row-span-2 overflow-hidden rounded-xl border border-green-light/20 bg-surface shadow-2xl shadow-black/30 sm:row-span-2">
-            <Image
-              src="/harish-profile.jpg"
-              alt="Portrait of Harish Vijayakumar"
-              fill
-              priority
-              sizes="(max-width: 640px) 38vw, (max-width: 1024px) 200px, 190px"
-              className="object-cover"
-            />
-          </div>
-          <div className="relative overflow-hidden rounded-xl border border-green-light/20 bg-surface shadow-xl shadow-black/25">
-            <Image
-              src="/toronto-trip.webp"
-              alt="Harish visiting Toronto"
-              fill
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 300px, 240px"
-              className="object-cover object-[55%_70%] transition duration-500 hover:scale-[1.03]"
-            />
-          </div>
-          <div className="relative overflow-hidden rounded-xl border border-green-light/20 bg-surface shadow-xl shadow-black/25">
-            <Image
-              src="/pc-build.webp"
-              alt="A custom PC build in progress"
-              fill
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 300px, 240px"
-              className="object-cover object-[55%_68%] transition duration-500 hover:scale-[1.03]"
-            />
-          </div>
+        <div className="mt-16 grid gap-5 lg:grid-cols-12">
+          <article className="bio-card overflow-hidden rounded-2xl border border-panel-border bg-surface/90 lg:col-span-5">
+            <div className="grid min-h-[430px] place-items-center overflow-hidden bg-[radial-gradient(circle_at_50%_30%,rgba(146,230,170,0.16),transparent_58%)] px-6 py-5">
+              <div className="relative h-[390px] w-[220px] overflow-hidden rounded-xl border border-green-light/20 shadow-2xl shadow-black/30 sm:h-[410px] sm:w-[231px]">
+                <Image
+                  src="/harish-profile.jpg"
+                  alt="Portrait of Harish Vijayakumar"
+                  fill
+                  priority
+                  sizes="231px"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            <div className="p-7 sm:p-8">
+              <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.12em] text-amber">CHIP DESIGN</p>
+              <p className="mt-4 leading-8 text-muted-text">
+                I&apos;m a computer engineering student focused on RTL design,
+                FPGA development, and computer architecture. I&apos;m working
+                toward becoming a highly skilled chip-design engineer with a
+                strong understanding of the complete tape-out process—from RTL
+                and verification through physical implementation.
+              </p>
+            </div>
+          </article>
+
+          <article className="bio-card overflow-hidden rounded-2xl border border-panel-border bg-surface/90 lg:col-span-7">
+            <div className="grid grid-cols-2 gap-1 bg-background-deep p-1">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src="/toronto-trip.webp"
+                  alt="Harish visiting Toronto"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 30vw"
+                  className="object-cover object-[55%_70%]"
+                />
+              </div>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src="/harish-and-girlfriend.webp"
+                  alt="Harish with his girlfriend"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 30vw"
+                  className="object-cover object-[center_62%]"
+                />
+              </div>
+            </div>
+            <div className="p-7 sm:p-8">
+              <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.12em] text-amber">BEYOND ENGINEERING</p>
+              <p className="mt-4 leading-8 text-muted-text">
+                Outside engineering, I love playing sports, traveling, and
+                discovering new experiences. A change of environment energizes
+                me, and I value meeting new people and learning from different
+                perspectives.
+              </p>
+            </div>
+          </article>
+
+          <article className="bio-card grid overflow-hidden rounded-2xl border border-panel-border bg-surface/90 lg:col-span-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="relative min-h-72 overflow-hidden lg:min-h-[360px]">
+              <Image
+                src="/pc-build.webp"
+                alt="A custom desktop PC during assembly"
+                fill
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="object-cover object-[center_68%]"
+              />
+            </div>
+            <div className="flex flex-col justify-center p-7 sm:p-10">
+              <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.12em] text-amber">WHERE IT STARTED</p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight">Building computers since childhood</h2>
+              <p className="mt-5 max-w-2xl leading-8 text-muted-text">
+                I built my first desktop with my father when I was around eight
+                years old—an Intel Core i5-4670K system with an NVIDIA GeForce
+                GTX 750 Ti. I started because I wanted better frame rates in
+                video games, but I quickly became more interested in how the
+                computer worked. Since then, I&apos;ve helped friends and family
+                assemble, upgrade, and repair desktops, handheld devices, and
+                other hardware.
+              </p>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -139,7 +207,7 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-[240px_1fr] md:items-end">
             <h2 className="text-3xl font-semibold tracking-tight">Selected projects</h2>
             <p className="max-w-2xl leading-7 text-muted-text">
-              A closer look at the RTL systems I have taken from architecture and simulation through FPGA implementation and physical testing.
+             
             </p>
           </div>
 
@@ -277,7 +345,7 @@ export default function Home() {
           <div>
             <h2 className="text-3xl font-semibold tracking-tight">Get in touch</h2>
             <p className="mt-3 max-w-xl leading-7 text-muted-text">
-              I&apos;m interested in FPGA, RTL, digital design, and hardware engineering opportunities.
+              I&apos;m interested in chip design, hardware engineering, mental health research, and just about anything else!
             </p>
             <a
               href="mailto:hvijayakumar32@gatech.edu"

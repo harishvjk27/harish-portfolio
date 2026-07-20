@@ -128,22 +128,33 @@ export default async function ProjectPage({
             </h2>
 
             {project.images?.length ? (
-              <div className="mt-10 grid gap-6 lg:grid-cols-2">
+              <div
+                className={`mt-10 grid gap-6 ${
+                  project.images.length > 1 ? "lg:grid-cols-2" : ""
+                }`}
+              >
                 {project.images.map((image) => (
-                  <div
+                  <a
                     key={image.src}
-                    className="overflow-hidden rounded-lg border border-panel-border bg-surface"
+                    href={image.src}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${image.alt} at full size`}
+                    className="group relative overflow-hidden rounded-lg border border-panel-border bg-surface transition hover:border-green focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-light"
                   >
-                    <div className="relative aspect-[16/9]">
+                    <div className="relative aspect-[16/9] bg-black/20">
                       <Image
                         src={image.src}
                         alt={image.alt}
                         fill
                         sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-contain"
+                        className="object-contain transition duration-300 group-hover:scale-[1.015]"
                       />
+                      <span className="absolute right-4 top-4 rounded-full border border-green-light/40 bg-background-deep/90 px-3 py-1.5 font-[family-name:var(--font-ibm-plex-mono)] text-[10px] tracking-[0.08em] text-green-pale backdrop-blur-sm">
+                        OPEN FULL SIZE ↗
+                      </span>
                     </div>
-                  </div>
+                  </a>
                 ))}
               </div>
             ) : null}

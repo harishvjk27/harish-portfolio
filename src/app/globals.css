@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --background: #07100c;
-  --background-deep: #030806;
-  --surface: #0d1812;
-  --surface-raised: #13221a;
-  --surface-soft: #18261f;
+  --background: #0a1a11;
+  --background-deep: #06110b;
+  --surface: #12271a;
+  --surface-raised: #193824;
+  --surface-soft: #20472e;
 
-  --green-dark: #123524;
-  --green: #2f7d4a;
-  --green-light: #83c995;
-  --green-pale: #c2e5c9;
+  --green-dark: #1b5735;
+  --green: #3ea866;
+  --green-light: #92e6aa;
+  --green-pale: #d7f7df;
 
-  --amber: #d6a44c;
-  --amber-light: #f0c56b;
+  --amber: #efb74d;
+  --amber-light: #ffd77d;
   --brown: #6b4c35;
   --blue-dark: #142631;
   --red: #b8574f;
 
-  --text: #f1f4ef;
-  --text-muted: #a8b2aa;
-  --text-dim: #738078;
-  --border: #294035;
+  --text: #f7fbf7;
+  --text-muted: #c0cec3;
+  --text-dim: #8ca092;
+  --border: #355d43;
 }
 
 @theme inline {
@@ -100,15 +100,31 @@ body {
 
 .portfolio-background {
   background-image:
-    radial-gradient(circle at 82% 8%, rgba(47, 125, 74, 0.2), transparent 26rem),
-    radial-gradient(circle at 8% 24%, rgba(214, 164, 76, 0.08), transparent 20rem),
-    linear-gradient(rgba(131, 201, 149, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(131, 201, 149, 0.025) 1px, transparent 1px);
+    radial-gradient(circle at 82% 8%, rgba(62, 168, 102, 0.3), transparent 28rem),
+    radial-gradient(circle at 8% 24%, rgba(239, 183, 77, 0.13), transparent 22rem),
+    linear-gradient(rgba(146, 230, 170, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(146, 230, 170, 0.035) 1px, transparent 1px);
   background-size: auto, auto, 64px 64px, 64px 64px;
 }
 
-.photo-collage {
-  transform: rotate(0.35deg);
+.nav-shell {
+  background:
+    linear-gradient(105deg, rgba(25, 56, 36, 0.94), rgba(6, 17, 11, 0.9)),
+    var(--background-deep);
+}
+
+.brand-chip {
+  background: linear-gradient(135deg, var(--amber-light), var(--green-light));
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+    0 8px 24px rgba(62, 168, 102, 0.22);
+}
+
+.bio-card {
+  background-image:
+    linear-gradient(135deg, rgba(146, 230, 170, 0.055), transparent 42%),
+    linear-gradient(315deg, rgba(239, 183, 77, 0.04), transparent 36%);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.2);
 }
 
 .circuit-section {
