@@ -26,7 +26,7 @@ export default function BuildGalleryPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-text">
             A collection of compact layouts, cooling configurations, component
-            installations, and systems I have helped assemble or troubleshoot.
+            installations, and systems I have helped assemble and/or troubleshoot.
           </p>
         </div>
       </header>

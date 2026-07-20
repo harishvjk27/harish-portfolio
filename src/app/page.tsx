@@ -119,14 +119,14 @@ export default function Home() {
 
         <div className="mt-16 grid gap-5 lg:grid-cols-12">
           <article className="bio-card overflow-hidden rounded-2xl border border-panel-border bg-surface/90 lg:col-span-5">
-            <div className="grid min-h-[430px] place-items-center overflow-hidden bg-[radial-gradient(circle_at_50%_30%,rgba(146,230,170,0.16),transparent_58%)] px-6 py-5">
-              <div className="relative h-[390px] w-[220px] overflow-hidden rounded-xl border border-green-light/20 shadow-2xl shadow-black/30 sm:h-[410px] sm:w-[231px]">
+            <div className="grid min-h-[370px] place-items-center overflow-hidden bg-[radial-gradient(circle_at_50%_30%,rgba(146,230,170,0.16),transparent_58%)] px-6 py-5">
+              <div className="relative h-[340px] w-[191px] overflow-hidden rounded-xl border border-green-light/20 shadow-2xl shadow-black/30 sm:h-[350px] sm:w-[197px]">
                 <Image
                   src="/harish-profile.jpg"
                   alt="Portrait of Harish Vijayakumar"
                   fill
                   priority
-                  sizes="231px"
+                  sizes="197px"
                   className="object-cover"
                 />
               </div>
@@ -144,8 +144,8 @@ export default function Home() {
           </article>
 
           <article className="bio-card overflow-hidden rounded-2xl border border-panel-border bg-surface/90 lg:col-span-7">
-            <div className="grid grid-cols-2 gap-1 bg-background-deep p-1">
-              <div className="relative aspect-[4/3] overflow-hidden">
+            <div className="grid grid-cols-2 gap-1 bg-background-deep p-1 md:grid-cols-6">
+              <div className="relative aspect-[4/3] overflow-hidden md:col-span-3">
                 <Image
                   src="/toronto-trip.webp"
                   alt="Harish visiting Toronto"
@@ -154,7 +154,7 @@ export default function Home() {
                   className="object-cover object-[55%_70%]"
                 />
               </div>
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden md:col-span-3">
                 <Image
                   src="/harish-and-girlfriend.webp"
                   alt="Harish with his girlfriend"
@@ -163,13 +163,39 @@ export default function Home() {
                   className="object-cover object-[center_62%]"
                 />
               </div>
+              <div className="relative aspect-[4/3] overflow-hidden md:col-span-2">
+                <Image
+                  src="/basketball-color.webp"
+                  alt="A basketball game at State Farm Arena"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 20vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative aspect-[4/3] overflow-hidden md:col-span-2">
+                <Image
+                  src="/outside-engineering-autumn.webp"
+                  alt="An autumn display with plants, pumpkins, and natural textures"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 20vw"
+                  className="object-cover object-center"
+                />
+              </div>
+              <div className="relative col-span-2 aspect-[4/3] overflow-hidden md:col-span-2">
+                <Image
+                  src="/esp32-project.webp"
+                  alt="ESP32 prototype assembled on breadboards with buttons, a joystick, and a display"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 20vw"
+                  className="object-cover object-[center_58%]"
+                />
+              </div>
             </div>
             <div className="p-7 sm:p-8">
               <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.12em] text-amber">BEYOND ENGINEERING</p>
               <p className="mt-4 leading-8 text-muted-text">
                 Outside engineering, I love playing sports, traveling, and
-                discovering new experiences. A change of environment energizes
-                me, and I value meeting new people and learning from different
+                discovering new experiences. I like changes in my environment, and I value meeting new people/learning from different
                 perspectives.
               </p>
             </div>
@@ -187,7 +213,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col justify-center p-7 sm:p-10">
               <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.12em] text-amber">WHERE IT STARTED</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight">Building computers since childhood</h2>
+              
               <p className="mt-5 max-w-2xl leading-8 text-muted-text">
                 I built my first desktop with my father when I was around eight
                 years old—an Intel Core i5-4670K system with an NVIDIA GeForce
