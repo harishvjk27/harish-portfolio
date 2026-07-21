@@ -35,8 +35,8 @@ export default async function BuildPage({
   ].filter((item): item is [string, string] => Boolean(item[1]));
 
   return (
-    <main className="min-h-screen bg-background-deep text-main-text">
-      <nav className="border-b border-panel-border bg-background">
+    <main className="detail-page build-page min-h-screen bg-background-deep text-main-text">
+      <nav className="detail-nav border-b border-panel-border bg-background">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
           <Link
             href="/#builds"
@@ -51,7 +51,7 @@ export default async function BuildPage({
         </div>
       </nav>
 
-      <section className="technical-grid border-b border-panel-border px-6 py-24 lg:px-10">
+      <section className="detail-hero technical-grid border-b border-panel-border px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <h1 className="max-w-5xl text-5xl font-semibold leading-tight tracking-tight sm:text-6xl">
             {build.title}
@@ -61,20 +61,10 @@ export default async function BuildPage({
             {build.description}
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-3">
-            {build.tags.map((tag) => (
-              <span
-                key={tag}
-                className="border border-panel-border bg-surface px-3 py-2 font-[family-name:var(--font-ibm-plex-mono)] text-[10px] text-green-pale"
-              >
-                {tag.toUpperCase()}
-              </span>
-            ))}
-          </div>
         </div>
       </section>
 
-      <section className="bg-background px-6 py-24 lg:px-10">
+      <section className="detail-section bg-background px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
@@ -99,7 +89,7 @@ export default async function BuildPage({
         </div>
       </section>
 
-      <section className="border-t border-panel-border bg-background-deep px-6 py-20 lg:px-10">
+      <section className="detail-section detail-section-alt border-t border-panel-border bg-background-deep px-6 py-20 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
             BUILD PHOTOS

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Manrope } from "next/font/google";
 import "./globals.css";
+import SiteEffects from "./SiteEffects";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${manrope.variable} ${ibmPlexMono.variable} antialiased`}
       >
+        <SiteEffects />
         {children}
       </body>
     </html>

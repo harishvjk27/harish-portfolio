@@ -5,8 +5,8 @@ import { pcBuildGallery } from "../../../data/portfolio";
 
 export default function BuildGalleryPage() {
   return (
-    <main className="portfolio-background min-h-screen bg-background-deep text-main-text">
-      <nav className="border-b border-panel-border bg-background-deep/80 backdrop-blur-md">
+    <main className="detail-page gallery-page portfolio-background min-h-screen bg-background-deep text-main-text">
+      <nav className="detail-nav border-b border-panel-border bg-background-deep/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
           <Link
             href="/#builds"
@@ -18,7 +18,7 @@ export default function BuildGalleryPage() {
         </div>
       </nav>
 
-      <header className="circuit-section border-b border-panel-border px-6 py-20 lg:px-10 lg:py-28">
+      <header className="detail-hero circuit-section border-b border-panel-border px-6 py-20 lg:px-10 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <p className="text-sm font-semibold tracking-[0.1em] text-amber">BUILD ARCHIVE</p>
           <h1 className="mt-5 max-w-4xl text-4xl font-semibold tracking-tight sm:text-6xl">
@@ -31,7 +31,7 @@ export default function BuildGalleryPage() {
         </div>
       </header>
 
-      <section className="bg-background px-6 py-16 lg:px-10 lg:py-24">
+      <section className="detail-section bg-background px-6 py-16 lg:px-10 lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
           {pcBuildGallery.map((image, index) => (
             <div

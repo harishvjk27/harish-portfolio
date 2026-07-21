@@ -26,8 +26,8 @@ export default async function PublicationPage({
   }
 
   return (
-    <main className="min-h-screen bg-background-deep text-main-text">
-      <nav className="border-b border-panel-border bg-background">
+    <main className="detail-page publication-page min-h-screen bg-background-deep text-main-text">
+      <nav className="detail-nav border-b border-panel-border bg-background">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <Link
             href="/#publications"
@@ -42,7 +42,7 @@ export default async function PublicationPage({
         </div>
       </nav>
 
-      <section className="technical-grid border-b border-panel-border px-6 py-24">
+      <section className="detail-hero technical-grid border-b border-panel-border px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-wrap items-center gap-3">
             <span className="border border-green-dark bg-green-dark/30 px-3 py-1.5 font-[family-name:var(--font-ibm-plex-mono)] text-[10px] tracking-[0.1em] text-green-light">
@@ -64,7 +64,7 @@ export default async function PublicationPage({
         </div>
       </section>
 
-      <section className="bg-background px-6 py-24">
+      <section className="detail-section bg-background px-6 py-24">
         <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[1fr_320px]">
           <div>
             <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
@@ -75,16 +75,6 @@ export default async function PublicationPage({
               {publication.description}
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-3">
-              {publication.topics.map((topic) => (
-                <span
-                  key={topic}
-                  className="border border-panel-border bg-surface px-3 py-2 font-[family-name:var(--font-ibm-plex-mono)] text-[10px] text-green-pale"
-                >
-                  {topic.toUpperCase()}
-                </span>
-              ))}
-            </div>
           </div>
 
           <aside className="h-fit border border-panel-border bg-surface p-6">

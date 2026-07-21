@@ -27,8 +27,8 @@ export default async function ProjectPage({
   }
 
   return (
-    <main className="min-h-screen bg-background-deep text-main-text">
-      <nav className="border-b border-panel-border bg-background">
+    <main className="detail-page project-page min-h-screen bg-background-deep text-main-text">
+      <nav className="detail-nav border-b border-panel-border bg-background">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
           <Link
             href="/"
@@ -43,13 +43,9 @@ export default async function ProjectPage({
         </div>
       </nav>
 
-      <section className="technical-grid border-b border-panel-border px-6 py-24 lg:px-10">
+      <section className="detail-hero technical-grid border-b border-panel-border px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="border border-green-dark bg-green-dark/30 px-3 py-1.5 font-[family-name:var(--font-ibm-plex-mono)] text-[10px] tracking-[0.12em] text-green-light">
-              {project.status}
-            </span>
-
             <span className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.12em] text-amber">
               {project.category}
             </span>
@@ -63,20 +59,10 @@ export default async function ProjectPage({
             {project.shortDescription}
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-3">
-            {project.technologies.map((technology) => (
-              <span
-                key={technology}
-                className="border border-panel-border bg-surface px-3 py-2 font-[family-name:var(--font-ibm-plex-mono)] text-[10px] tracking-[0.08em] text-green-pale"
-              >
-                {technology.toUpperCase()}
-              </span>
-            ))}
-          </div>
         </div>
       </section>
 
-      <section className="bg-background px-6 py-24 lg:px-10">
+      <section className="detail-section bg-background px-6 py-24 lg:px-10">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
@@ -118,7 +104,7 @@ export default async function ProjectPage({
       </section>
 
       {(project.images?.length || project.videos?.length) && (
-        <section className="border-y border-panel-border bg-background-deep px-6 py-24 lg:px-10">
+        <section className="detail-section detail-section-alt border-y border-panel-border bg-background-deep px-6 py-24 lg:px-10">
           <div className="mx-auto max-w-7xl">
             <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
               PROJECT MEDIA
@@ -195,7 +181,7 @@ export default async function ProjectPage({
         </section>
       )}
 
-      <section className="border-y border-panel-border bg-background-deep px-6 py-24 lg:px-10">
+      <section className="detail-section border-y border-panel-border bg-background-deep px-6 py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.15em] text-amber">
             TECHNICAL HIGHLIGHTS
@@ -219,7 +205,7 @@ export default async function ProjectPage({
       </section>
 
       {project.github ? (
-      <section className="border-t border-panel-border bg-background px-6 py-20 lg:px-10">
+      <section className="detail-section detail-section-alt border-t border-panel-border bg-background px-6 py-20 lg:px-10">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 sm:flex-row sm:items-center">
           <div>
             <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs text-amber">

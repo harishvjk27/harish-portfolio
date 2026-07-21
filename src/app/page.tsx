@@ -38,7 +38,7 @@ export default function Home() {
         >
           <a
             href="#top"
-            aria-label="Harish Vijayakumar — back to top"
+            aria-label="Harish Vijayakumar - back to top"
             className="group flex items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-light"
           >
             <span className="brand-chip grid h-11 w-11 place-items-center rounded-xl font-[family-name:var(--font-ibm-plex-mono)] text-sm font-semibold text-background-deep transition group-hover:rotate-[-3deg]">
@@ -76,21 +76,15 @@ export default function Home() {
       </header>
 
       <section className="relative mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-28 lg:px-8 lg:py-32">
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+        <div className="mx-auto max-w-3xl text-center">
           <div>
-            <p className="inline-flex rounded-full border border-amber/25 bg-amber/10 px-4 py-2 text-sm font-medium text-amber-light">
-              CompE at Georgia Tech
-            </p>
-            <h1 className="mt-5 text-5xl font-semibold leading-[1.08] tracking-[-0.04em] sm:text-6xl">
-              Hi, I&apos;m Harish.
+           
+            <h1 className="hero-name mt-5 text-5xl font-semibold leading-[1.08] sm:text-7xl">
+              Harish Vijayakumar
             </h1>
           </div>
-          <div>
-            <p className="max-w-2xl text-xl leading-9 text-muted-text">
-              I design digital hardware, explore how processors work, and enjoy
-              following an idea from RTL and simulation to a physical system.
-            </p>
-            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <div className="mt-7">
+            <div className="flex flex-wrap items-center justify-center gap-4">
               <a
                 href="#projects"
                 className="rounded-md bg-green-light px-5 py-3 text-sm font-semibold text-background-deep shadow-[0_12px_34px_rgba(47,125,74,0.24)] transition hover:-translate-y-0.5 hover:bg-green-pale focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-light"
@@ -109,7 +103,7 @@ export default function Home() {
                 href="https://github.com/harishvjk27"
                 target="_blank"
                 rel="noreferrer"
-                className="text-sm font-semibold text-muted-text transition-colors hover:text-green-light"
+                className="rounded-md border border-amber/35 bg-amber/10 px-5 py-3 text-sm font-semibold text-amber-light transition hover:-translate-y-0.5 hover:bg-amber/20"
               >
                 GitHub
               </a>
@@ -132,29 +126,29 @@ export default function Home() {
               </div>
             </div>
             <div className="p-7 sm:p-8">
-              <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.12em] text-amber">CHIP DESIGN</p>
+              <p className="font-[family-name:var(--font-ibm-plex-mono)] text-xs tracking-[0.12em] text-amber">MY BACKGROUND</p>
               <p className="mt-4 leading-8 text-muted-text">
-                I&apos;m a computer engineering student focused on RTL design,
+                I&apos;m a computer engineering student at Georgia Tech focused on RTL design,
                 FPGA development, and computer architecture. I&apos;m working
                 toward becoming a highly skilled chip-design engineer with a
-                strong understanding of the complete tape-out process—from RTL
+                strong understanding of the complete tape-out process - from RTL
                 and verification through physical implementation.
               </p>
             </div>
           </article>
 
           <article className="bio-card overflow-hidden rounded-2xl border border-panel-border bg-surface/90 lg:col-span-7">
-            <div className="grid grid-cols-2 gap-1 bg-background-deep p-1 md:grid-cols-6">
-              <div className="relative aspect-[4/3] overflow-hidden md:col-span-3">
+            <div className="gallery-frame grid grid-cols-2 gap-1 overflow-hidden rounded-t-2xl bg-background-deep p-1 md:grid-cols-6">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-tl-[13px] md:col-span-3">
                 <Image
                   src="/toronto-trip.webp"
                   alt="Harish visiting Toronto"
                   fill
                   sizes="(max-width: 1024px) 50vw, 30vw"
-                  className="object-cover object-[55%_70%]"
+                  className="toronto-photo object-cover object-[45%_65%] transition-transform duration-700"
                 />
               </div>
-              <div className="relative aspect-[4/3] overflow-hidden md:col-span-3">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-tr-[13px] md:col-span-3">
                 <Image
                   src="/harish-and-girlfriend.webp"
                   alt="Harish with his girlfriend"
@@ -216,7 +210,7 @@ export default function Home() {
               
               <p className="mt-5 max-w-2xl leading-8 text-muted-text">
                 I built my first desktop with my father when I was around eight
-                years old—an Intel Core i5-4670K system with an NVIDIA GeForce
+                years old - an Intel Core i5-4670K system with an NVIDIA GeForce
                 GTX 750 Ti. I started because I wanted better frame rates in
                 video games, but I quickly became more interested in how the
                 computer worked. Since then, I&apos;ve helped friends and family
@@ -228,7 +222,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="circuit-section border-t border-panel-border bg-background px-6 py-20 sm:py-24 lg:px-8">
+      <section id="projects" className="project-section circuit-section border-t border-panel-border bg-background px-6 py-20 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-6 md:grid-cols-[240px_1fr] md:items-end">
             <h2 className="text-3xl font-semibold tracking-tight">Selected projects</h2>
@@ -241,11 +235,10 @@ export default function Home() {
             {projects.map((project) => (
               <article
                 key={project.slug}
-                className="hardware-card flex h-full flex-col overflow-hidden rounded-xl border border-panel-border bg-surface/85"
+                className="project-card hardware-card flex h-full flex-col overflow-hidden rounded-xl border bg-surface/85"
               >
-                <div className="flex items-center justify-between gap-4 border-b border-panel-border bg-background-deep/45 px-6 py-4">
+                <div className="border-b border-panel-border bg-background-deep/45 px-6 py-4">
                   <p className="text-xs font-semibold tracking-[0.08em] text-amber">{project.category}</p>
-                  <p className="text-xs text-green-light">{project.status}</p>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-2xl font-semibold leading-tight">{project.title}</h3>
@@ -265,12 +258,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="publications" className="border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
+      <section id="publications" className="publication-section accent-section border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <h2 className="text-3xl font-semibold tracking-tight">Publications</h2>
           <div className="mt-10 grid gap-8 md:grid-cols-2">
             {publications.map((publication) => (
-              <article key={publication.slug}>
+              <article key={publication.slug} className="publication-card content-card rounded-xl border bg-surface/65 p-7">
                 <p className="text-sm text-amber">
                   {publication.venue} · {publication.year}
                 </p>
@@ -285,7 +278,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="builds" className="circuit-section border-t border-panel-border bg-background px-6 py-20 sm:py-24 lg:px-8">
+      <section id="builds" className="build-section circuit-section border-t border-panel-border bg-background px-6 py-20 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-6 md:grid-cols-[240px_1fr] md:items-end">
             <h2 className="text-3xl font-semibold tracking-tight">PC builds</h2>
@@ -297,7 +290,7 @@ export default function Home() {
             {pcBuilds.map((build) => (
               <article
                 key={build.slug}
-                className="hardware-card flex h-full flex-col overflow-hidden rounded-xl border border-panel-border bg-surface/85"
+                className="build-card hardware-card flex h-full flex-col overflow-hidden rounded-xl border bg-surface/85"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -321,7 +314,7 @@ export default function Home() {
             ))}
             <Link
               href="/builds/gallery"
-              className="hardware-card group flex h-full flex-col overflow-hidden rounded-xl border border-amber/35 bg-surface/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-light"
+              className="build-card hardware-card group flex h-full flex-col overflow-hidden rounded-xl border bg-surface/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-light"
             >
               <div className="grid aspect-[4/3] grid-cols-2 grid-rows-2 gap-1 overflow-hidden bg-background-deep p-1">
                 {pcBuildGallery.slice(0, 4).map((image, index) => (
@@ -350,7 +343,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
+      <section className="accent-section border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
         <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[260px_1fr]">
           <div>
             <h2 className="text-3xl font-semibold tracking-tight">Technical focus</h2>
@@ -360,7 +353,7 @@ export default function Home() {
           </div>
           <ul className="flex flex-wrap content-start gap-x-6 gap-y-3 text-muted-text">
             {skills.map((skill) => (
-              <li key={skill} className="border-b border-green-dark pb-1">{skill}</li>
+              <li key={skill} className="skill-chip rounded-full border border-panel-border bg-surface/75 px-4 py-2">{skill}</li>
             ))}
           </ul>
         </div>
