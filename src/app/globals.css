@@ -173,11 +173,19 @@ body {
   --nav-accent: 239, 183, 77;
 }
 
+.section-nav-link--red {
+  --nav-accent: 184, 87, 79;
+}
+
+.section-nav-link--copper {
+  --nav-accent: 205, 132, 77;
+}
+
 .section-nav-link:hover,
 .section-nav-link:focus-visible {
-  color: rgb(var(--nav-accent));
-  background: rgba(var(--nav-accent), 0.14);
-  box-shadow: inset 0 0 0 1px rgba(var(--nav-accent), 0.26);
+  color: rgb(var(--nav-accent)) !important;
+  background: rgba(var(--nav-accent), 0.18) !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--nav-accent), 0.38);
 }
 
 .section-nav-link:focus-visible {
@@ -228,16 +236,52 @@ body {
 .experience-section {
   background-color: rgba(8, 22, 14, 0.84);
   background-image:
-    radial-gradient(circle at 14% 28%, rgba(146, 230, 170, 0.13), transparent 26rem),
-    radial-gradient(circle at 88% 78%, rgba(205, 132, 77, 0.08), transparent 24rem);
+    radial-gradient(circle at 14% 28%, rgba(184, 87, 79, 0.19), transparent 28rem),
+    radial-gradient(circle at 88% 78%, rgba(184, 87, 79, 0.1), transparent 24rem) !important;
 }
 
 .experience-card {
-  border-color: rgba(146, 230, 170, 0.34);
+  border-color: rgba(184, 87, 79, 0.5) !important;
+  background-color: rgba(18, 39, 26, 0.8) !important;
   background-image:
-    linear-gradient(110deg, rgba(146, 230, 170, 0.055), transparent 42%),
-    radial-gradient(circle at 100% 0, rgba(205, 132, 77, 0.1), transparent 20rem);
+    radial-gradient(circle at 100% 0, rgba(184, 87, 79, 0.14), transparent 20rem),
+    linear-gradient(110deg, rgba(184, 87, 79, 0.05), transparent 46%) !important;
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.2);
+}
+
+.experience-link {
+  color: #e4938c;
+}
+
+.experience-kicker {
+  color: var(--amber);
+}
+
+.experience-role {
+  color: var(--text-dim);
+}
+
+.experience-link:hover {
+  color: #ffd2ce;
+}
+
+.technical-focus-section {
+  --card-accent: 205, 132, 77;
+  background-color: rgba(6, 17, 11, 0.42);
+  background-image: none !important;
+}
+
+.technical-focus-section .skill-chip {
+  color: var(--text-muted);
+  border-color: rgba(var(--card-accent), 0.5) !important;
+  background-color: rgba(18, 39, 26, 0.75) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.14);
+}
+
+.technical-focus-section .skill-chip:hover {
+  color: var(--text-muted);
+  border-color: rgba(var(--card-accent), 0.7) !important;
+  background-color: rgba(25, 56, 36, 0.9) !important;
 }
 
 .build-section.circuit-section {

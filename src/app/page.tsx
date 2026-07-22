@@ -11,11 +11,11 @@ import {
 } from "../data/portfolio";
 
 const navItems = [
-  { label: "Experience", href: "#experience", tone: "green" },
+  { label: "Experience", href: "#experience", tone: "red" },
   { label: "Projects", href: "#projects", tone: "purple" },
   { label: "Research", href: "#publications", tone: "blue" },
   { label: "Builds", href: "#builds", tone: "yellow" },
-  { label: "Technical focus", href: "#technical-focus", tone: "green" },
+  { label: "Skills", href: "#skills", tone: "copper" },
   { label: "Contact", href: "#contact", tone: "green" },
 ];
 
@@ -238,16 +238,16 @@ export default function Home() {
               <article key={experience.organization} className="experience-card rounded-2xl border bg-surface/80 p-7 sm:p-9">
                 <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-green-light">
+                    <p className="experience-kicker text-xs font-semibold uppercase tracking-[0.14em]">
                       {experience.context}
                     </p>
                     <h3 className="mt-4 text-3xl font-semibold">{experience.organization}</h3>
-                    <p className="mt-2 text-amber-light">{experience.role}</p>
+                    <p className="experience-role mt-2">{experience.role}</p>
                     <a
                       href={experience.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-7 inline-flex items-center gap-2 font-semibold text-green-light transition hover:text-green-pale"
+                      className="experience-link mt-7 inline-flex items-center gap-2 font-semibold transition"
                     >
                       Visit RevSync <span aria-hidden="true">→</span>
                     </a>
@@ -322,9 +322,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-6 md:grid-cols-[240px_1fr] md:items-end">
             <h2 className="text-3xl font-semibold tracking-tight">PC builds</h2>
-            <p className="max-w-2xl leading-7 text-muted-text">
-              Systems I have assembled for myself and friends, with attention to compatibility, thermals, cable routing, and dependable daily use.
-            </p>
+  
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {pcBuilds.map((build) => (
@@ -383,10 +381,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="technical-focus" className="accent-section border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
+      <section id="skills" className="technical-focus-section border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
         <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[260px_1fr]">
           <div>
-            <h2 className="text-3xl font-semibold tracking-tight">Technical focus</h2>
+            <h2 className="text-3xl font-semibold tracking-tight">Skills</h2>
             <p className="mt-3 leading-7 text-muted-text">
               Tools and subjects I use across coursework, research, and personal projects.
             </p>
