@@ -11,11 +11,12 @@ import {
 } from "../data/portfolio";
 
 const navItems = [
-  ["Experience", "#experience"],
-  ["Projects", "#projects"],
-  ["Research", "#publications"],
-  ["Builds", "#builds"],
-  ["Contact", "#contact"],
+  { label: "Experience", href: "#experience", tone: "green" },
+  { label: "Projects", href: "#projects", tone: "purple" },
+  { label: "Research", href: "#publications", tone: "blue" },
+  { label: "Builds", href: "#builds", tone: "yellow" },
+  { label: "Technical focus", href: "#technical-focus", tone: "green" },
+  { label: "Contact", href: "#contact", tone: "green" },
 ];
 
 function TextLink({ href, children }: { href: string; children: React.ReactNode }) {
@@ -54,19 +55,19 @@ export default function Home() {
             </span>
           </a>
 
-          <div className="hidden items-center rounded-xl border border-panel-border/70 bg-background-deep/45 p-1 text-sm text-muted-text md:flex">
-            {navItems.map(([label, href]) => (
+          <div className="hidden items-center rounded-xl border border-panel-border/70 bg-background-deep/45 p-1 text-sm text-muted-text lg:flex">
+            {navItems.map(({ label, href, tone }) => (
               <a
                 key={href}
                 href={href}
-                className="rounded-lg px-4 py-2 transition hover:bg-green-dark/65 hover:text-green-pale"
+                className={`section-nav-link section-nav-link--${tone} rounded-lg px-3 py-2 transition`}
               >
                 {label}
               </a>
             ))}
           </div>
 
-          <div className="flex items-center gap-1 text-sm md:hidden">
+          <div className="flex items-center gap-1 text-sm lg:hidden">
             <a href="#projects" className="rounded-lg px-3 py-2 text-green-pale hover:bg-green-dark/60">
               Work
             </a>
@@ -299,7 +300,7 @@ export default function Home() {
 
       <section id="publications" className="publication-section accent-section border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-3xl font-semibold tracking-tight">Publications</h2>
+          <h2 className="text-3xl font-semibold tracking-tight">Published Research</h2>
           <div className="mt-10 grid gap-8 md:grid-cols-2">
             {publications.map((publication) => (
               <article key={publication.slug} className="publication-card content-card rounded-xl border bg-surface/65 p-7">
@@ -382,7 +383,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="accent-section border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
+      <section id="technical-focus" className="accent-section border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
         <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[260px_1fr]">
           <div>
             <h2 className="text-3xl font-semibold tracking-tight">Technical focus</h2>
