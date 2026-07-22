@@ -5,7 +5,6 @@ import { useEffect } from "react";
 export default function SiteEffects() {
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
     const revealElements = Array.from(
       document.querySelectorAll<HTMLElement>(
         "main section > div, main header > div, main article",

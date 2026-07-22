@@ -62,6 +62,14 @@ body {
   color: var(--text);
 }
 
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  body * {
+    cursor: url("/cursor.svg") 1 1, default !important;
+  }
+}
+
 .hero-name {
   position: relative;
   display: inline-block;
@@ -178,41 +186,59 @@ body {
 
 .project-section.circuit-section {
   background-image:
-    radial-gradient(circle at 88% 22%, rgba(71, 161, 174, 0.13), transparent 28rem),
-    linear-gradient(90deg, transparent 0 8%, rgba(71, 161, 174, 0.045) 8% 8.08%, transparent 8.08% 100%);
+    radial-gradient(circle at 88% 22%, rgba(153, 129, 190, 0.19), transparent 28rem),
+    radial-gradient(circle at 12% 78%, rgba(153, 129, 190, 0.1), transparent 25rem),
+    linear-gradient(90deg, transparent 0 8%, rgba(153, 129, 190, 0.07) 8% 8.08%, transparent 8.08% 100%);
 }
 
 .publication-section {
   background-image:
-    radial-gradient(circle at 12% 68%, rgba(153, 129, 190, 0.14), transparent 28rem),
-    radial-gradient(circle at 88% 20%, rgba(62, 168, 102, 0.08), transparent 24rem);
+    radial-gradient(circle at 12% 68%, rgba(71, 161, 174, 0.19), transparent 28rem),
+    radial-gradient(circle at 88% 20%, rgba(71, 161, 174, 0.09), transparent 24rem);
+}
+
+.experience-section {
+  background-color: rgba(8, 22, 14, 0.84);
+  background-image:
+    radial-gradient(circle at 14% 28%, rgba(146, 230, 170, 0.13), transparent 26rem),
+    radial-gradient(circle at 88% 78%, rgba(205, 132, 77, 0.08), transparent 24rem);
+}
+
+.experience-card {
+  border-color: rgba(146, 230, 170, 0.34);
+  background-image:
+    linear-gradient(110deg, rgba(146, 230, 170, 0.055), transparent 42%),
+    radial-gradient(circle at 100% 0, rgba(205, 132, 77, 0.1), transparent 20rem);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.2);
 }
 
 .build-section.circuit-section {
   background-image:
-    radial-gradient(circle at 82% 28%, rgba(205, 132, 77, 0.13), transparent 30rem),
-    linear-gradient(90deg, transparent 0 8%, rgba(205, 132, 77, 0.04) 8% 8.08%, transparent 8.08% 100%);
+    radial-gradient(circle at 82% 28%, rgba(239, 183, 77, 0.15), transparent 30rem),
+    radial-gradient(circle at 12% 78%, rgba(239, 183, 77, 0.1), transparent 25rem),
+    linear-gradient(90deg, transparent 0 8%, rgba(239, 183, 77, 0.07) 8% 8.08%, transparent 8.08% 100%);
 }
 
 .project-card {
-  --card-accent: 71, 161, 174;
+  --card-accent: 153, 129, 190;
+  border-color: rgba(var(--card-accent), 0.58);
 }
 
 .publication-card {
-  --card-accent: 153, 129, 190;
+  --card-accent: 71, 161, 174;
 }
 
 .build-card {
-  --card-accent: 205, 132, 77;
+  --card-accent: 239, 183, 77;
 }
 
 .project-card,
 .publication-card,
 .build-card {
-  border-color: rgba(var(--card-accent), 0.42);
+  border-color: rgba(var(--card-accent), 0.5);
   background-image:
-    radial-gradient(circle at 100% 0, rgba(var(--card-accent), 0.11), transparent 16rem),
-    linear-gradient(145deg, rgba(var(--card-accent), 0.035), transparent 55%);
+    radial-gradient(circle at 100% 0, rgba(var(--card-accent), 0.14), transparent 16rem),
+    linear-gradient(145deg, rgba(var(--card-accent), 0.05), transparent 55%);
 }
 
 .publication-card {
@@ -241,31 +267,40 @@ body {
   --page-accent: 62, 168, 102;
   position: relative;
   background-image:
-    radial-gradient(circle at 88% 8%, rgba(var(--page-accent), 0.2), transparent 30rem),
-    radial-gradient(circle at 8% 42%, rgba(239, 183, 77, 0.08), transparent 26rem),
-    radial-gradient(circle at 50% 80%, rgba(var(--page-accent), 0.055), transparent 34rem);
+    radial-gradient(circle at 88% 8%, rgba(var(--page-accent), 0.24), transparent 30rem),
+    radial-gradient(circle at 8% 42%, rgba(var(--page-accent), 0.13), transparent 26rem),
+    radial-gradient(circle at 50% 80%, rgba(var(--page-accent), 0.07), transparent 34rem);
 }
 
 .project-page {
-  --page-accent: 71, 161, 174;
-}
-
-.build-page {
-  --page-accent: 205, 132, 77;
-}
-
-.publication-page {
   --page-accent: 153, 129, 190;
 }
 
+.build-page {
+  --page-accent: 239, 183, 77;
+}
+
+.publication-page {
+  --page-accent: 71, 161, 174;
+}
+
 .gallery-page {
-  --page-accent: 221, 171, 78;
+  --page-accent: 239, 183, 77;
 }
 
 .detail-nav {
   background: rgba(6, 17, 11, 0.84);
-  box-shadow: 0 1px 0 rgba(var(--page-accent), 0.2);
+  box-shadow: 0 1px 0 rgba(var(--page-accent), 0.26);
   backdrop-filter: blur(18px);
+}
+
+.detail-page .text-amber,
+.detail-page .text-amber-light {
+  color: rgb(var(--page-accent));
+}
+
+.detail-page .border-green {
+  border-color: rgba(var(--page-accent), 0.65);
 }
 
 .detail-hero {
@@ -273,7 +308,7 @@ body {
   overflow: hidden;
   background-color: rgba(10, 26, 17, 0.7);
   background-image:
-    radial-gradient(circle at 78% 24%, rgba(var(--page-accent), 0.2), transparent 25rem),
+    radial-gradient(circle at 78% 24%, rgba(var(--page-accent), 0.24), transparent 25rem),
     linear-gradient(rgba(146, 230, 170, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(146, 230, 170, 0.045) 1px, transparent 1px);
   background-size: auto, 48px 48px, 48px 48px;
@@ -285,7 +320,7 @@ body {
   bottom: -42px;
   width: 150px;
   height: 150px;
-  border: 1px solid rgba(239, 183, 77, 0.28);
+  border: 1px solid rgba(var(--page-accent), 0.4);
   border-radius: 32px;
   content: "";
   transform: rotate(18deg);
@@ -299,8 +334,8 @@ body {
 .detail-section-alt {
   background-color: rgba(6, 17, 11, 0.88);
   background-image:
-    radial-gradient(circle at 85% 50%, rgba(var(--page-accent), 0.075), transparent 26rem),
-    linear-gradient(115deg, transparent 40%, rgba(239, 183, 77, 0.025));
+    radial-gradient(circle at 85% 50%, rgba(var(--page-accent), 0.1), transparent 26rem),
+    linear-gradient(115deg, transparent 40%, rgba(var(--page-accent), 0.045));
 }
 
 .circuit-section {

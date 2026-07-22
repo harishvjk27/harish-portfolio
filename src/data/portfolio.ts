@@ -53,12 +53,34 @@ export type PcBuild = {
   }[];
 };
 
+export type Experience = {
+  organization: string;
+  role: string;
+  context: string;
+  description: string;
+  contribution: string;
+  href: string;
+};
+
+export const experiences: Experience[] = [
+  {
+    organization: "RevSync",
+    role: "Lead Hardware Engineer",
+    context: "vehicle intelligence",
+    description:
+      "RevSync is developing a modular vehicle-intelligence platform that brings together telemetry, sensors, vehicle data, and real-time driver coaching.",
+    contribution:
+      "I'm supporting the team during its early business-development stage by helping present at Georgia Tech CREATE-X and create hardware requirements, platform choices, and designs.",
+    href: "https://revsync.app/",
+  },
+];
+
 export const projects: Project[] = [
   {
     number: "01",
     slug: "fpga-uart-dsp-platform",
     category: "FPGA COMMUNICATION",
-    title: "FPGA UART Communication & DSP Platform",
+    title: "UART Communication & DSP Platform",
     shortDescription:
       "A modular SystemVerilog platform integrating UART communication, FIFO buffering, command parsing, multi-character response control, and DSP visualization.",
     overview:

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import {
+  experiences,
   pcBuildGallery,
   pcBuilds,
   projects,
@@ -10,6 +11,7 @@ import {
 } from "../data/portfolio";
 
 const navItems = [
+  ["Experience", "#experience"],
   ["Projects", "#projects"],
   ["Research", "#publications"],
   ["Builds", "#builds"],
@@ -38,7 +40,7 @@ export default function Home() {
         >
           <a
             href="#top"
-            aria-label="Harish Vijayakumar - back to top"
+            aria-label="Harish Vijayakumar — back to top"
             className="group flex items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-light"
           >
             <span className="brand-chip grid h-11 w-11 place-items-center rounded-xl font-[family-name:var(--font-ibm-plex-mono)] text-sm font-semibold text-background-deep transition group-hover:rotate-[-3deg]">
@@ -47,7 +49,7 @@ export default function Home() {
             <span className="hidden sm:block">
               <span className="block text-sm font-semibold tracking-tight">Harish Vijayakumar</span>
               <span className="mt-0.5 block font-[family-name:var(--font-ibm-plex-mono)] text-[10px] tracking-[0.14em] text-green-light">
-                RTL · FPGA · HARDWARE
+                RTL · ARCHITECTURE · HARDWARE
               </span>
             </span>
           </a>
@@ -131,7 +133,7 @@ export default function Home() {
                 I&apos;m a computer engineering student at Georgia Tech focused on RTL design,
                 FPGA development, and computer architecture. I&apos;m working
                 toward becoming a highly skilled chip-design engineer with a
-                strong understanding of the complete tape-out process - from RTL
+                strong understanding of the complete tape-out process—from RTL
                 and verification through physical implementation.
               </p>
             </div>
@@ -222,6 +224,44 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="experience" className="experience-section border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-6 md:grid-cols-[240px_1fr] md:items-end">
+            <h2 className="text-3xl font-semibold tracking-tight">Experience</h2>
+            <p className="max-w-2xl leading-7 text-muted-text">
+            </p>
+          </div>
+
+          <div className="mt-12 space-y-5">
+            {experiences.map((experience) => (
+              <article key={experience.organization} className="experience-card rounded-2xl border bg-surface/80 p-7 sm:p-9">
+                <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-green-light">
+                      {experience.context}
+                    </p>
+                    <h3 className="mt-4 text-3xl font-semibold">{experience.organization}</h3>
+                    <p className="mt-2 text-amber-light">{experience.role}</p>
+                    <a
+                      href={experience.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-7 inline-flex items-center gap-2 font-semibold text-green-light transition hover:text-green-pale"
+                    >
+                      Visit RevSync <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                  <div className="space-y-5 leading-8 text-muted-text">
+                    <p>{experience.description}</p>
+                    <p>{experience.contribution}</p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="projects" className="project-section circuit-section border-t border-panel-border bg-background px-6 py-20 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-6 md:grid-cols-[240px_1fr] md:items-end">
@@ -247,7 +287,6 @@ export default function Home() {
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-dim-text">Technical focus</p>
                     <p className="mt-2 text-sm leading-6 text-green-pale">{project.technologies.slice(0, 5).join(" · ")}</p>
                   </div>
-                  <p className="mt-6 text-sm leading-6 text-muted-text">{project.highlights[0]}</p>
                   <div className="mt-auto pt-7">
                     <TextLink href={`/projects/${project.slug}`}>View project</TextLink>
                   </div>
