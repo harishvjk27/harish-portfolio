@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 import SiteEffects from "./SiteEffects";
+import { Analytics } from "@vercel/analytics/next";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -32,6 +33,7 @@ export default function RootLayout({
       >
         <SiteEffects />
         {children}
+        <Analytics />
       </body>
     </html>
   );
