@@ -11,11 +11,11 @@ import {
 } from "../data/portfolio";
 
 const navItems = [
+  { label: "Skills", href: "#skills", tone: "copper" },
   { label: "Experience", href: "#experience", tone: "red" },
   { label: "Projects", href: "#projects", tone: "purple" },
   { label: "Research", href: "#publications", tone: "blue" },
   { label: "Builds", href: "#builds", tone: "yellow" },
-  { label: "Skills", href: "#skills", tone: "copper" },
   { label: "Contact", href: "#contact", tone: "green" },
 ];
 
@@ -225,6 +225,22 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="skills" className="technical-focus-section border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
+        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[260px_1fr]">
+          <div>
+            <h2 className="text-3xl font-semibold tracking-tight">Skills</h2>
+            <p className="mt-3 leading-7 text-muted-text">
+              Tools and subjects I use across coursework, research, and personal projects.
+            </p>
+          </div>
+          <ul className="flex flex-wrap content-start gap-x-6 gap-y-3 text-muted-text">
+            {skills.map((skill) => (
+              <li key={skill} className="skill-chip rounded-full border border-panel-border bg-surface/75 px-4 py-2">{skill}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <section id="experience" className="experience-section border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-6 md:grid-cols-[240px_1fr] md:items-end">
@@ -378,22 +394,6 @@ export default function Home() {
               </div>
             </Link>
           </div>
-        </div>
-      </section>
-
-      <section id="skills" className="technical-focus-section border-t border-panel-border px-6 py-20 sm:py-24 lg:px-8">
-        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[260px_1fr]">
-          <div>
-            <h2 className="text-3xl font-semibold tracking-tight">Skills</h2>
-            <p className="mt-3 leading-7 text-muted-text">
-              Tools and subjects I use across coursework, research, and personal projects.
-            </p>
-          </div>
-          <ul className="flex flex-wrap content-start gap-x-6 gap-y-3 text-muted-text">
-            {skills.map((skill) => (
-              <li key={skill} className="skill-chip rounded-full border border-panel-border bg-surface/75 px-4 py-2">{skill}</li>
-            ))}
-          </ul>
         </div>
       </section>
 
